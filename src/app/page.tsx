@@ -1,65 +1,85 @@
-import Image from "next/image";
+import { Metadata } from "next"
+import { getPayload } from "@/lib/payload-client"
+import { BlockRenderer } from "@/components/public/BlockRenderer"
+import { Navbar } from "@/components/public/layout/Navbar"
+import { Footer } from "@/components/public/layout/Footer"
+import { CookieBanner } from "@/components/public/shared/CookieBanner"
+import { HeroSection } from "@/components/public/sections/HeroSection"
+import { StatsSection } from "@/components/public/sections/StatsSection"
+import { TransformationSection } from "@/components/public/sections/TransformationSection"
+import { ProgramsSection } from "@/components/public/sections/ProgramsSection"
+import { TestimonialsSection } from "@/components/public/sections/TestimonialsSection"
+import { SpeakingSection } from "@/components/public/sections/SpeakingSection"
+import { BlogPreviewSection } from "@/components/public/sections/BlogPreviewSection"
+import { CTASection } from "@/components/public/sections/CTASection"
 
-export default function Home() {
+// NOTE: src/app/(public)/page.tsx also resolves to "/" and conflicts with this file.
+// One of the two must be deleted. This file (root page.tsx) takes precedence in Next.js.
+// Delete src/app/(public)/page.tsx after verifying this file works correctly.
+
+export const metadata: Metadata = {
+  title: "Sravanthi Prattipati | Speaker & Confidence Coach",
+  description:
+    "Become the speaker people remember. Speaker coaching for ambitious professionals — stage presence, speaker identity, and confidence coaching.",
+}
+
+export default async function HomePage() {
+  let navItems: any
+  let footerData: any
+  let siteSettings: any
+  let homePage: any
+
+  try {
+    const payload = await getPayload()
+    const [nav, footer, settings, pages] = await Promise.all([
+      payload.findGlobal({ slug: "navigation" }),
+      payload.findGlobal({ slug: "footer" }),
+      payload.findGlobal({ slug: "site-settings" }),
+      payload.find({
+        collection: "pages",
+        where: { and: [{ slug: { equals: "home" } }, { status: { equals: "published" } }] },
+        limit: 1,
+      }),
+    ])
+    navItems = nav?.items
+    footerData = footer
+    siteSettings = settings
+    homePage = pages.docs[0]
+  } catch {
+    // Fall through — use defaults
+  }
+
+  const mainContent =
+    homePage?.layout && homePage.layout.length > 0 ? (
+      <BlockRenderer blocks={homePage.layout as any[]} />
+    ) : (
+      <>
+        <HeroSection />
+        <StatsSection />
+        <TransformationSection />
+        <ProgramsSection />
+        <TestimonialsSection />
+        <SpeakingSection />
+        <BlogPreviewSection />
+        <CTASection />
+      </>
+    )
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+    <>
+      <Navbar items={navItems} siteName={siteSettings?.siteName} />
+      <main>{mainContent}</main>
+      <Footer
+        tagline={footerData?.tagline}
+        columns={footerData?.columns}
+        bottomText={footerData?.bottomText}
+        siteName={siteSettings?.siteName}
+        socialLinks={siteSettings?.socialLinks}
+      />
+      <CookieBanner
+        text={siteSettings?.cookieBanner?.text}
+        ctaLabel={siteSettings?.cookieBanner?.ctaLabel}
+      />
+    </>
+  )
 }

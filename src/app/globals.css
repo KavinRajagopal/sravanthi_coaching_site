@@ -1,13 +1,15 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* shadcn/ui theme tokens */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -45,6 +47,20 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Brand design tokens */
+  --color-brand-black: #0A0A0A;
+  --color-brand-surface: #111111;
+  --color-brand-elevated: #1A1A1A;
+  --color-brand-gold: #C9A84C;
+  --color-brand-gold-light: #E8C96E;
+  --color-brand-gold-muted: #8B6914;
+  --color-brand-cream: #F5F0E8;
+  --color-brand-muted: #A89F8C;
+  --color-brand-border: #2A2520;
+
+  /* Brand fonts */
+  --font-display: var(--font-cormorant);
 }
 
 :root {
@@ -124,6 +140,21 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    scroll-behavior: smooth;
   }
+}
+
+/* Custom scrollbar for brand aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A84C;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E8C96E;
 }
