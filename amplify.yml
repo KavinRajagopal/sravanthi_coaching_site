@@ -6,6 +6,7 @@ frontend:
         - npm ci
     build:
       commands:
+        - env | grep -E "DATABASE_URL|PAYLOAD_SECRET|UPLOADTHING_TOKEN|RESEND_API_KEY|CONTACT_EMAIL|FROM_EMAIL|NEXT_PUBLIC_SITE_URL|SEED_SECRET" >> .env.production
         - npm run build
   artifacts:
     baseDirectory: .next
