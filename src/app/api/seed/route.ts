@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getPayload } from "@/lib/payload-client"
+import { pushDevSchema } from "@payloadcms/drizzle"
 
 // Protect with a secret token: call with ?token=YOUR_SEED_SECRET
 const SEED_SECRET = process.env.SEED_SECRET || "seed-sravanthi-2024"
@@ -17,6 +18,12 @@ export async function GET(req: NextRequest) {
 
   try {
     const payload = await getPayload()
+
+    // Push schema to DB (creates tables if they don't exist)
+    // This is safe on a fresh DB — no data loss warnings expected
+    process.env.PAYLOAD_FORCE_DRIZZLE_PUSH = "true"
+    await pushDevSchema(payload.db as any)
+    results.push("✅ Database schema pushed")
 
     // ─── Admin User ────────────────────────────────────────────────────────
     try {
