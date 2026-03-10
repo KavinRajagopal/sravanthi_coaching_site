@@ -6,8 +6,6 @@ frontend:
         - npm ci
     build:
       commands:
-        # Run Payload database migrations before building
-        - npx payload migrate
         - npm run build
   artifacts:
     baseDirectory: .next
