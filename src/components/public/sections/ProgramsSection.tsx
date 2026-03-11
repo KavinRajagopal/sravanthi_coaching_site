@@ -55,8 +55,8 @@ const defaultPrograms: Program[] = [
     ],
     format: "In-Person (Dallas, TX)",
     duration: "June 1 – July 31 (Flexible Schedule)",
-    ctaLabel: "Register Now",
-    ctaHref: "/book-call",
+    ctaLabel: "Learn More",
+    ctaHref: "/leadership-launchpad",
     featured: true,
   },
   {
