@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, Check, Users, Mic, Target, Star, Rocket } from "lucide-react"
+import { ArrowRight, Check, Users, Mic, Target, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ScrollReveal } from "@/components/public/shared/ScrollReveal"
 import { CTASection } from "@/components/public/sections/CTASection"
@@ -48,13 +48,6 @@ const skills = [
   "Tell engaging stories",
   "Connect with and engage an audience",
   "Communicate like a leader",
-]
-
-const showcaseItems = [
-  "Welcome speech",
-  "Introducing speakers or performers",
-  "Audience interaction",
-  "Closing remarks",
 ]
 
 const whyItems = [
