@@ -419,10 +419,10 @@ async function seed() {
       slug: "booking-settings",
       data: {
         activeFlow: "direct",
-        bookingUrl: "https://calendly.com/sravanthi",
+        bookingUrl: "https://calendly.com/emceesravz/intro-meeting",
         ctaLabel: "Schedule a Discovery Call",
         pageHeadline: "Let's talk about your next event",
-        pageSubtext: "Book a free 30-minute discovery call to explore how we can work together to make your next event unforgettable.",
+        pageSubtext: "Book a free 15-minute discovery call to explore how we can work together to make your next event unforgettable.",
         successMessage: "Thank you! Your session is booked. Check your email for confirmation details.",
       },
     })

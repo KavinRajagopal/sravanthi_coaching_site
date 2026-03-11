@@ -17,8 +17,8 @@ export default async function BookCallPage() {
   } catch {}
 
   const headline = bookingSettings?.pageHeadline || "Let's talk about your next event"
-  const subtext = bookingSettings?.pageSubtext || "Book a free 30-minute discovery call to explore how we can work together to make your next event unforgettable."
-  const bookingUrl = bookingSettings?.bookingUrl || "https://calendly.com/sravanthi"
+  const subtext = bookingSettings?.pageSubtext || "Book a free 15-minute discovery call to explore how we can work together to make your next event unforgettable."
+  const bookingUrl = bookingSettings?.bookingUrl || "https://calendly.com/emceesravz/intro-meeting"
   const ctaLabel = bookingSettings?.ctaLabel || "Schedule a Discovery Call"
   const activeFlow = bookingSettings?.activeFlow || "direct"
 
@@ -39,7 +39,7 @@ export default async function BookCallPage() {
             <h2 className="font-display text-2xl text-brand-text font-light mb-6">What to expect on the call</h2>
             <ul className="space-y-4">
               {[
-                "A relaxed 30-minute conversation (no pressure, no sales pitch)",
+                "A relaxed 15-minute conversation (no pressure, no sales pitch)",
                 "We'll discuss your event needs or speaking goals",
                 "You'll learn how we can work together",
                 "You'll leave with clarity on your next step",

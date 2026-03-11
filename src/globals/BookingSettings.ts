@@ -24,7 +24,7 @@ export const BookingSettings: GlobalConfig = {
     {
       name: "bookingUrl",
       type: "text",
-      defaultValue: "https://calendly.com/sravanthi",
+      defaultValue: "https://calendly.com/emceesravz/intro-meeting",
       label: "Booking URL (Calendly or similar)",
     },
     {
@@ -40,7 +40,7 @@ export const BookingSettings: GlobalConfig = {
     },
     {
       name: "pageSubtext", type: "textarea",
-      defaultValue: "Book a free 30-minute discovery call to explore how coaching can help you develop the stage presence, confidence, and speaking identity you've been building toward.",
+      defaultValue: "Book a free 15-minute discovery call to explore how coaching can help you develop the stage presence, confidence, and speaking identity you've been building toward.",
     },
   ],
 }
