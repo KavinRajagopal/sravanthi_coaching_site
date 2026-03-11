@@ -23,7 +23,7 @@ const personSchema = {
   knowsAbout: ["Emcee", "Event Hosting", "Public Speaking", "Speaker Coaching", "Stage Presence"],
   sameAs: [
     "https://www.linkedin.com/in/sravanthi-prattipati",
-    "https://www.instagram.com/sravanthicoaches",
+    "https://www.instagram.com/emcee_sravz/",
   ],
 }
 

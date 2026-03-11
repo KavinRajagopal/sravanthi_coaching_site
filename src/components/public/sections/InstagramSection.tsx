@@ -6,7 +6,7 @@ interface InstagramSectionProps {
 }
 
 export function InstagramSection({
-  instagramUrl = "https://instagram.com/sravanthi",
+  instagramUrl = "https://www.instagram.com/emcee_sravz/",
 }: InstagramSectionProps) {
   return (
     <section className="bg-brand-elevated py-24 md:py-32">
@@ -27,7 +27,7 @@ export function InstagramSection({
             className="mt-8 inline-flex items-center gap-3 text-brand-gold hover:text-brand-gold-light transition-colors font-sans text-sm tracking-widest uppercase"
           >
             <Instagram size={20} />
-            Follow @sravanthi
+            Follow @emcee_sravz
           </a>
         </ScrollReveal>
       </div>

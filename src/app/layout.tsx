@@ -10,10 +10,10 @@ const organizationSchema = {
   name: "Sravanthi Prattipati",
   url: SITE_URL,
   logo: `${SITE_URL}/images/logo.png`,
-  description: "Speaker coaching for ambitious professionals — stage presence, speaker identity, and confidence coaching.",
+  description: "Professional emcee, event host, and speaker coach. Fulfilling events, one at a time.",
   sameAs: [
     "https://www.linkedin.com/in/sravanthi-prattipati",
-    "https://www.instagram.com/sravanthicoaches",
+    "https://www.instagram.com/emcee_sravz/",
   ],
   contactPoint: {
     "@type": "ContactPoint",

@@ -368,8 +368,8 @@ async function seed() {
             },
             {
               blockType: "instagram",
-              instagramUrl: "https://instagram.com/sravanthi",
-              handle: "@sravanthi",
+              instagramUrl: "https://www.instagram.com/emcee_sravz/",
+              handle: "@emcee_sravz",
               subtitle: "Behind the scenes, event highlights, and speaking tips.",
             },
             {
