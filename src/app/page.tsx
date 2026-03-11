@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+export const dynamic = "force-dynamic"
 import { getPayload } from "@/lib/payload-client"
 import { BlockRenderer } from "@/components/public/BlockRenderer"
 import { Navbar } from "@/components/public/layout/Navbar"
