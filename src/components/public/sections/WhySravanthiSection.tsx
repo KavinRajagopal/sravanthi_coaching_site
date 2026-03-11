@@ -20,8 +20,8 @@ const defaultItems: WhyItem[] = [
   },
   {
     icon: <Globe size={24} />,
-    title: "Bilingual — Telugu & English",
-    description: "Fluent in both Telugu and English, Sravanthi seamlessly switches between languages to connect with diverse audiences at Indian celebrations and corporate events alike.",
+    title: "Multilingual — Telugu, Hindi & English",
+    description: "Fluent in English, Telugu, and Hindi, and conversational in Tamil — Sravanthi seamlessly switches between languages to connect with diverse audiences at Indian celebrations and corporate events alike.",
   },
   {
     icon: <Gamepad2 size={24} />,

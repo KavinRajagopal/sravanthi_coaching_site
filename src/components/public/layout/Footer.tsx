@@ -23,8 +23,8 @@ const defaultColumns: FooterColumn[] = [
   {
     heading: "Services",
     links: [
-      { label: "Emcee & Hosting", href: "/services" },
-      { label: "Speaking Coaching", href: "/services" },
+      { label: "Emcee & Hosting", href: "/#services" },
+      { label: "Speaking Coaching", href: "/#services" },
       { label: "Book a Call", href: "/book-call" },
     ],
   },

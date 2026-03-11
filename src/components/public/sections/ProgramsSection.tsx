@@ -41,7 +41,6 @@ const defaultPrograms: Program[] = [
     ctaLabel: "Enquire Now",
     ctaHref: "/book-call",
     featured: true,
-    slug: "emcee-hosting",
   },
   {
     id: "2",
@@ -59,7 +58,6 @@ const defaultPrograms: Program[] = [
     ctaLabel: "Register Now",
     ctaHref: "/book-call",
     featured: true,
-    slug: "leadership-launchpad",
   },
   {
     id: "3",
@@ -77,7 +75,6 @@ const defaultPrograms: Program[] = [
     ctaLabel: "Book a Call",
     ctaHref: "/book-call",
     featured: false,
-    slug: "speaking-coaching",
   },
 ]
 
