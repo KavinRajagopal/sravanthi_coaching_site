@@ -28,23 +28,41 @@ const defaultPrograms: Program[] = [
   {
     id: "1",
     title: "Emcee & Hosting Services",
-    tagline: "Your event, elevated",
-    summary: "Professional emcee for weddings, Sangeets, Sweet 16s, coming-of-age celebrations, corporate galas, conferences, and more. Engaging audiences with warmth, energy, and seamless flow.",
+    tagline: "Setting the Stage for Memorable Moments",
+    summary: "Professional emcee for weddings, Sangeets, concerts, corporate events, birthdays, babyshowers, HalfSaree/Dhoti ceremonies, and more. Based in Dallas, TX and open to travel.",
     outcomes: [
       { outcome: "Weddings, Sangeets & Indian celebrations" },
       { outcome: "Corporate events, galas & conferences" },
-      { outcome: "Celebrity & VIP interviews" },
-      { outcome: "Birthday parties & milestone events" },
+      { outcome: "Concerts & entertainment events" },
+      { outcome: "Birthdays, babyshowers & milestone events" },
     ],
-    format: "In-Person or Virtual",
+    format: "In-Person (Dallas, TX — open to travel)",
     duration: "Custom",
     ctaLabel: "Enquire Now",
     ctaHref: "/book-call",
     featured: true,
-    slug: "mc-hosting",
+    slug: "emcee-hosting",
   },
   {
     id: "2",
+    title: "Leadership Launchpad — Summer Courses",
+    tagline: "Empowering the next generation",
+    summary: "Summer courses for Grades 1–12. Public speaking, writing, acting, improv, leadership, mindset coaching, and more. Flexible schedule, limited seats. Starting at $99+.",
+    outcomes: [
+      { outcome: "Grades 1–6: Public Speaking, Writing, Acting, Mindfulness, Storytelling + Improv" },
+      { outcome: "Grades 7–12: College Readiness, Leadership 101, Public Speaking + Improv" },
+      { outcome: "Time & Task Management, Stress Management, Investing 101" },
+      { outcome: "Internship & job shadowing opportunities" },
+    ],
+    format: "In-Person (Dallas, TX)",
+    duration: "June 1 – July 31 (Flexible Schedule)",
+    ctaLabel: "Register Now",
+    ctaHref: "/book-call",
+    featured: true,
+    slug: "leadership-launchpad",
+  },
+  {
+    id: "3",
     title: "Speaking Coaching & Workshops",
     tagline: "Find your voice",
     summary: "1:1 coaching and group workshops to develop your speaking presence, confidence, and presentation skills for any stage or boardroom.",
@@ -80,7 +98,7 @@ export function ProgramsSection({
           <div className="mt-6 mx-auto w-12 h-px bg-brand-gold" />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((program, i) => (
             <ScrollReveal key={program.id} delay={i * 0.1}>
               <div className={`relative border transition-all duration-300 group h-full flex flex-col ${program.featured ? "border-brand-gold bg-white" : "border-brand-border bg-white hover:border-brand-gold/50"}`}>

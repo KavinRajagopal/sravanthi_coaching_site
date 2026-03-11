@@ -10,7 +10,7 @@ export const FooterGlobal: GlobalConfig = {
     read: () => true,
   },
   fields: [
-    { name: "tagline", type: "text", defaultValue: "Professional emcee & speaker coach. Fulfilling events, one at a time." },
+    { name: "tagline", type: "text", defaultValue: "Setting the stage for memorable moments. Dallas, TX — open to travel." },
     {
       name: "columns",
       type: "array",
@@ -30,6 +30,7 @@ export const FooterGlobal: GlobalConfig = {
           heading: "Services",
           links: [
             { label: "Emcee & Hosting", href: "/services/emcee-hosting" },
+            { label: "Leadership Launchpad", href: "/services/leadership-launchpad" },
             { label: "Speaking Coaching", href: "/services/speaking-coaching" },
           ],
         },

@@ -17,7 +17,7 @@ interface HeroSectionProps {
 
 export function HeroSection({
   headline = "Sravanthi Prattipati",
-  subheadline = "From weddings and Sangeets to corporate galas and celebrity interviews — bringing warmth, energy, and seamless flow to every event.",
+  subheadline = "Bringing warmth, energy, and unforgettable moments to every stage — from intimate celebrations to grand corporate events. Based in Dallas, TX.",
   ctaPrimary = { label: "Book for Your Event", href: "/book-call" },
   ctaSecondary = { label: "View Services", href: "/services" },
   heroImage,

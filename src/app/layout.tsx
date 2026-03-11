@@ -7,18 +7,20 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://sravanthi.com"
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Sravanthi Prattipati",
+  name: "Emcee Sravz — Sravanthi Prattipati",
   url: SITE_URL,
   logo: `${SITE_URL}/images/logo.png`,
-  description: "Professional emcee, event host, and speaker coach. Fulfilling events, one at a time.",
+  description: "Bringing warmth, energy, and unforgettable moments to every stage. Emcee services for weddings, corporate events, and celebrations. Based in Dallas, TX.",
   sameAs: [
     "https://www.linkedin.com/in/sravanthi-prattipati",
     "https://www.instagram.com/emcee_sravz/",
   ],
   contactPoint: {
     "@type": "ContactPoint",
-    email: "hello@sravanthi.com",
+    email: "psravanthi108@gmail.com",
+    telephone: "682-238-0691",
     contactType: "customer service",
+    areaServed: "US",
   },
 }
 

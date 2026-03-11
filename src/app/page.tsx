@@ -10,13 +10,12 @@ import { ProgramsSection } from "@/components/public/sections/ProgramsSection"
 import { TestimonialsSection } from "@/components/public/sections/TestimonialsSection"
 import { SpeakingSection } from "@/components/public/sections/SpeakingSection"
 import { WhySravanthiSection } from "@/components/public/sections/WhySravanthiSection"
-import { InstagramSection } from "@/components/public/sections/InstagramSection"
 import { CTASection } from "@/components/public/sections/CTASection"
 
 export const metadata: Metadata = {
-  title: "Sravanthi Prattipati | Emcee & Speaker Coach",
+  title: "Emcee Sravz | Sravanthi Prattipati — Emcee & Event Host",
   description:
-    "Professional emcee, hosting services, and speaker coaching. Fulfilling events, one at a time.",
+    "Bringing warmth, energy, and unforgettable moments to every stage. Emcee services for weddings, corporate events, and celebrations. Based in Dallas, TX.",
 }
 
 export default async function HomePage() {
@@ -56,7 +55,6 @@ export default async function HomePage() {
         <ProgramsSection />
         <SpeakingSection elfsightWidgetId={siteSettings?.elfsightWidgetId} />
         <TestimonialsSection />
-        <InstagramSection instagramUrl={siteSettings?.socialLinks?.instagram || siteSettings?.instagramUrl} />
         <CTASection />
       </>
     )
