@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
+import { WhatsAppButton } from "@/components/public/shared/WhatsAppButton";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://sravanthi.com"
 
@@ -40,24 +41,27 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Sravanthi Prattipati | Speaker & Confidence Coach",
-    template: "%s | Sravanthi Prattipati",
+    default: "Emcee Sravz | Sravanthi Prattipati — Emcee & Event Host",
+    template: "%s | Emcee Sravz",
   },
   description:
-    "Become the speaker people remember. Speaker coaching for ambitious professionals — stage presence, speaker identity, and confidence coaching.",
+    "Bringing warmth, energy, and unforgettable moments to every stage. Emcee services for weddings, Sangeets, corporate events, and celebrations. Dallas, TX.",
   keywords: [
-    "speaker coach",
-    "confidence coach",
-    "stage presence",
-    "public speaking coach",
+    "emcee",
+    "event host",
+    "wedding emcee",
+    "Sangeet emcee",
+    "corporate emcee",
     "Sravanthi Prattipati",
-    "executive presence",
-    "communication coaching",
+    "Emcee Sravz",
+    "Dallas TX emcee",
+    "Indian wedding emcee",
+    "Telugu emcee",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Sravanthi Prattipati",
+    siteName: "Emcee Sravz",
   },
   robots: {
     index: true,
@@ -78,7 +82,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body className="antialiased font-sans">{children}</body>
+      <body className="antialiased font-sans">
+        {children}
+        <WhatsAppButton />
+      </body>
     </html>
   );
 }
