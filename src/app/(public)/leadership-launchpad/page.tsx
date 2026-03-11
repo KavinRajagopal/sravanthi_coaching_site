@@ -8,7 +8,7 @@ import { CTASection } from "@/components/public/sections/CTASection"
 export const metadata: Metadata = {
   title: "Leadership Launchpad — Public Speaking & Confidence Coaching | Emcee Sravz",
   description:
-    "Private & group public speaking and confidence coaching for students. Build leadership, communication, and stage presence with Sravz — a professional emcee who has hosted 100+ live events.",
+    "Private & group public speaking and confidence coaching. Build leadership, communication, and stage presence with Sravz — a professional emcee who has hosted 100+ live events.",
 }
 
 const privatePackages = [
@@ -101,16 +101,16 @@ export default function LeadershipLaunchpadPage() {
 
           <ScrollReveal delay={0.15} className="mt-10 max-w-3xl mx-auto">
             <p className="text-brand-muted text-lg leading-relaxed">
-              Leadership Launchpad is a private one-on-one coaching program designed to help students build confidence, communicate clearly, and develop leadership through public speaking and emceeing skills.
+              Leadership Launchpad is a private one-on-one coaching program designed to help individuals build confidence, communicate clearly, and develop leadership through public speaking and emceeing skills.
             </p>
           </ScrollReveal>
 
           <ScrollReveal delay={0.25} className="mt-8 max-w-2xl mx-auto">
             <p className="text-brand-muted text-sm mb-4 font-medium uppercase tracking-widest">
-              Students learn real-world communication skills used in:
+              Participants learn real-world communication skills used in:
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              {["School presentations", "Leadership roles", "Debates and competitions", "Interviews", "Event hosting"].map((skill) => (
+              {["Work/School presentations", "Leadership roles", "Debates and competitions", "Interviews", "Event hosting"].map((skill) => (
                 <span
                   key={skill}
                   className="border border-brand-border text-brand-muted text-sm px-4 py-2 hover:border-brand-gold/40 transition-colors"
@@ -123,7 +123,7 @@ export default function LeadershipLaunchpadPage() {
 
           <ScrollReveal delay={0.35} className="mt-10 max-w-3xl mx-auto">
             <p className="text-brand-muted leading-relaxed">
-              Sessions are tailored personally to each student. Students train with Sravz, a professional emcee and radio host who has hosted 100+ live events with audiences of thousands.
+              Sessions are tailored personally to each participant. Participants train with Sravz, a professional emcee and radio host who has hosted 100+ live events with audiences of thousands.
             </p>
           </ScrollReveal>
 
@@ -254,7 +254,7 @@ export default function LeadershipLaunchpadPage() {
 
           <ScrollReveal delay={0.1} className="mt-8">
             <p className="text-brand-muted text-lg leading-relaxed">
-              If you have a group of students (friends, siblings, or classmates), contact me for discounted rates.
+              If you have a group of individuals (friends, siblings, or classmates), contact me for discounted rates.
             </p>
           </ScrollReveal>
 
