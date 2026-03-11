@@ -88,22 +88,16 @@ export function HeroSection({
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
-            className="relative hidden lg:block"
+            className="relative"
           >
             <div className="relative w-full aspect-[3/4] max-w-md mx-auto">
-              {heroImage ? (
-                <Image
-                  src={heroImage.url}
-                  alt={heroImage.alt}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              ) : (
-                <div className="absolute inset-0 border-2 border-brand-border bg-brand-elevated flex items-center justify-center">
-                  <p className="text-brand-muted text-sm tracking-widest uppercase">Photo</p>
-                </div>
-              )}
+              <Image
+                src={heroImage?.url || "/images/sravanthi-hero.jpeg"}
+                alt={heroImage?.alt || "Sravanthi Prattipati — Professional Emcee"}
+                fill
+                className="object-cover object-top"
+                priority
+              />
             </div>
           </motion.div>
         </div>

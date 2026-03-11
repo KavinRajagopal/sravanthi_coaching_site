@@ -50,7 +50,7 @@ export function BlockRenderer({ blocks, siteSettings }: BlockRendererProps) {
           case "why-sravanthi":
             return <WhySravanthiSection key={i} {...block} />
           case "instagram":
-            return <InstagramSection key={i} {...block} instagramUrl={block.instagramUrl || siteSettings?.instagramUrl || siteSettings?.socialLinks?.instagram} />
+            return <InstagramSection key={i} {...block} instagramUrl={block.instagramUrl || siteSettings?.instagramUrl || siteSettings?.socialLinks?.instagram} elfsightWidgetId={siteSettings?.elfsightWidgetId} />
           default:
             return null
         }

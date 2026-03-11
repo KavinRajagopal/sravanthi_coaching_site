@@ -3,19 +3,21 @@
 import Script from "next/script"
 
 interface InstagramFeedProps {
-  widgetId: string
+  widgetId?: string
 }
 
+const DEFAULT_WIDGET_ID = "83639f75-3a97-49cf-8505-9452729c0c8f"
+
 export function InstagramFeed({ widgetId }: InstagramFeedProps) {
-  if (!widgetId) return null
+  const id = widgetId || DEFAULT_WIDGET_ID
 
   return (
     <>
       <Script
-        src="https://static.elfsight.com/platform/platform.js"
+        src="https://elfsightcdn.com/platform.js"
         strategy="lazyOnload"
       />
-      <div className={`elfsight-app-${widgetId}`} />
+      <div className={`elfsight-app-${id}`} data-elfsight-app-lazy />
     </>
   )
 }
