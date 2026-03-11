@@ -8,6 +8,7 @@ import { CTASection } from "@/components/public/sections/CTASection"
 import { StatsSection } from "@/components/public/sections/StatsSection"
 import { BlogPreviewSection } from "@/components/public/sections/BlogPreviewSection"
 import { FAQSection } from "@/components/public/sections/FAQSection"
+import { RichTextSection } from "@/components/public/sections/RichTextSection"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Block = { blockType: string; [key: string]: any }
@@ -41,6 +42,8 @@ export function BlockRenderer({ blocks }: BlockRendererProps) {
             return <BlogPreviewSection key={i} {...block} />
           case "faq":
             return <FAQSection key={i} {...block} />
+          case "rich-text":
+            return <RichTextSection key={i} {...block} />
           default:
             return null
         }

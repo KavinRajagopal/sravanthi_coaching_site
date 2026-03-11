@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getPayload } from "@/lib/payload-client"
-import { pushDevSchema } from "@payloadcms/drizzle"
 
 // Protect with a secret token: call with ?token=YOUR_SEED_SECRET
 const SEED_SECRET = process.env.SEED_SECRET || "seed-sravanthi-2024"
@@ -18,12 +17,7 @@ export async function GET(req: NextRequest) {
 
   try {
     const payload = await getPayload()
-
-    // Push schema to DB (creates tables if they don't exist)
-    // This is safe on a fresh DB — no data loss warnings expected
-    process.env.PAYLOAD_FORCE_DRIZZLE_PUSH = "true"
-    await pushDevSchema(payload.db as any)
-    results.push("✅ Database schema pushed")
+    results.push("✅ Database connected")
 
     // ─── Admin User ────────────────────────────────────────────────────────
     try {
@@ -194,6 +188,7 @@ export async function GET(req: NextRequest) {
     }
 
     // ─── Blog Posts ────────────────────────────────────────────────────────
+    const emptyLexical = { root: { type: "root", children: [{ type: "paragraph", children: [{ type: "text", text: "Full article content coming soon.", version: 1 }], direction: "ltr", format: "", indent: 0, version: 1 }], direction: "ltr", format: "", indent: 0, version: 1 } }
     try {
       const existing = await payload.find({ collection: "blog-posts", limit: 1 })
       if (existing.docs.length === 0) {
@@ -202,6 +197,7 @@ export async function GET(req: NextRequest) {
             title: "5 Habits That Separate Memorable Speakers from Forgettable Ones",
             slug: "5-habits-memorable-speakers",
             excerpt: "Discover the daily practices that transform ordinary communicators into speakers who leave lasting impressions.",
+            content: emptyLexical,
             author: "Sravanthi Prattipati",
             status: "published",
             publishedAt: new Date("2024-03-01").toISOString(),
@@ -211,6 +207,7 @@ export async function GET(req: NextRequest) {
             title: "The Stage Fright Reframe: How to Turn Nerves into Presence",
             slug: "stage-fright-reframe",
             excerpt: "What if your pre-speaking anxiety wasn't a problem to solve, but a signal pointing toward something powerful?",
+            content: emptyLexical,
             author: "Sravanthi Prattipati",
             status: "published",
             publishedAt: new Date("2024-02-15").toISOString(),
@@ -220,6 +217,7 @@ export async function GET(req: NextRequest) {
             title: "Why Your Speaker Identity Matters More Than Your Slides",
             slug: "speaker-identity-matters",
             excerpt: "The most impactful speakers don't just deliver content. They deliver themselves. Here's how to find and own your unique speaker identity.",
+            content: emptyLexical,
             author: "Sravanthi Prattipati",
             status: "published",
             publishedAt: new Date("2024-02-01").toISOString(),
@@ -241,9 +239,9 @@ export async function GET(req: NextRequest) {
     try {
       const existing = await payload.find({ collection: "legal-pages", limit: 1 })
       if (existing.docs.length === 0) {
-        await payload.create({ collection: "legal-pages", data: { title: "Privacy Policy", type: "privacy" } })
-        await payload.create({ collection: "legal-pages", data: { title: "Terms & Conditions", type: "terms" } })
-        await payload.create({ collection: "legal-pages", data: { title: "Cookie Policy", type: "cookies" } })
+        await payload.create({ collection: "legal-pages", data: { title: "Privacy Policy", type: "privacy", content: emptyLexical } })
+        await payload.create({ collection: "legal-pages", data: { title: "Terms & Conditions", type: "terms", content: emptyLexical } })
+        await payload.create({ collection: "legal-pages", data: { title: "Cookie Policy", type: "cookies", content: emptyLexical } })
         results.push("✅ Legal pages created (privacy, terms, cookies)")
       } else {
         results.push("⏭️ Legal pages already exist")
