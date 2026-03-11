@@ -16,6 +16,7 @@ import { BlogPosts } from "@/collections/BlogPosts"
 import { ContactSubmissions } from "@/collections/ContactSubmissions"
 import { LegalPages } from "@/collections/LegalPages"
 
+import { autoSeed } from "@/lib/auto-seed"
 import { SiteSettings } from "@/globals/SiteSettings"
 import { Navigation } from "@/globals/Navigation"
 import { FooterGlobal } from "@/globals/Footer"
@@ -52,6 +53,10 @@ export default buildConfig({
     FooterGlobal,
     BookingSettings,
   ],
+
+  onInit: async (payload) => {
+    await autoSeed(payload)
+  },
 
   editor: lexicalEditor({}),
 
