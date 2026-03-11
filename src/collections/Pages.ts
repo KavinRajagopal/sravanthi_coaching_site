@@ -12,6 +12,7 @@ import { RichTextBlock } from "@/blocks/RichText.block"
 import { FAQBlock } from "@/blocks/FAQ.block"
 import { WhySravanthiBlock } from "@/blocks/WhySravanthi.block"
 import { InstagramBlock } from "@/blocks/Instagram.block"
+import { PackagesBlock } from "@/blocks/Packages.block"
 
 export const Pages: CollectionConfig = {
   slug: "pages",
@@ -62,6 +63,7 @@ export const Pages: CollectionConfig = {
         FAQBlock,
         WhySravanthiBlock,
         InstagramBlock,
+        PackagesBlock,
       ],
     },
     {

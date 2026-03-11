@@ -10,6 +10,7 @@ import { ProgramsSection } from "@/components/public/sections/ProgramsSection"
 import { TestimonialsSection } from "@/components/public/sections/TestimonialsSection"
 import { SpeakingSection } from "@/components/public/sections/SpeakingSection"
 import { WhySravanthiSection } from "@/components/public/sections/WhySravanthiSection"
+import { PackagesSection } from "@/components/public/sections/PackagesSection"
 import { CTASection } from "@/components/public/sections/CTASection"
 
 export const metadata: Metadata = {
@@ -53,6 +54,7 @@ export default async function HomePage() {
         <StatsSection />
         <WhySravanthiSection />
         <ProgramsSection />
+        <PackagesSection />
         <SpeakingSection elfsightWidgetId={siteSettings?.elfsightWidgetId} />
         <TestimonialsSection />
         <CTASection />

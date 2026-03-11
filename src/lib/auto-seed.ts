@@ -237,6 +237,12 @@ export async function autoSeed(payload: Payload) {
             programs: serviceIds,
           },
           {
+            blockType: "packages",
+            sectionTitle: "Emcee Packages",
+            subtitle: "Choose the experience that fits your event.",
+            quote: "I like to bring people together and make the event memorable. If it's a concert, my goal is to make sure everyone is having a good time. If it's a Sangeet, my goal is to make the bride and groom feel special — I treat it as my best friend's wedding.",
+          },
+          {
             blockType: "speaking",
             sectionTitle: "Past Events & Appearances",
             subtitle: "Emcee · Speaker · Workshop Facilitator",

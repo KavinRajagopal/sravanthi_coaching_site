@@ -11,6 +11,7 @@ import { FAQSection } from "@/components/public/sections/FAQSection"
 import { RichTextSection } from "@/components/public/sections/RichTextSection"
 import { WhySravanthiSection } from "@/components/public/sections/WhySravanthiSection"
 import { InstagramSection } from "@/components/public/sections/InstagramSection"
+import { PackagesSection } from "@/components/public/sections/PackagesSection"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Block = { blockType: string; [key: string]: any }
@@ -49,6 +50,8 @@ export function BlockRenderer({ blocks, siteSettings }: BlockRendererProps) {
             return <RichTextSection key={i} {...block} />
           case "why-sravanthi":
             return <WhySravanthiSection key={i} {...block} />
+          case "packages":
+            return <PackagesSection key={i} {...block} />
           case "instagram":
             return <InstagramSection key={i} {...block} instagramUrl={block.instagramUrl || siteSettings?.instagramUrl || siteSettings?.socialLinks?.instagram} elfsightWidgetId={siteSettings?.elfsightWidgetId} />
           default:
