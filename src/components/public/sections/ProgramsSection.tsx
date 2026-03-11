@@ -46,7 +46,7 @@ const defaultPrograms: Program[] = [
     id: "2",
     title: "Leadership Launchpad",
     tagline: "Empowering the next generation",
-    summary: "Private & group coaching to help students build confidence, communicate clearly, and develop leadership through public speaking and emceeing skills.",
+    summary: "Private & group coaching to help individuals build confidence, communicate clearly, and develop leadership through public speaking and emceeing skills.",
     outcomes: [
       { outcome: "Private 1-on-1 coaching sessions" },
       { outcome: "Public speaking, storytelling & audience engagement" },

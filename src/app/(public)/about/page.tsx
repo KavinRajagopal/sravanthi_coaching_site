@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
-import { Instagram, ExternalLink } from "lucide-react"
+import { Instagram } from "lucide-react"
 import { getPayload } from "@/lib/payload-client"
 import { BlockRenderer } from "@/components/public/BlockRenderer"
 import { CTASection } from "@/components/public/sections/CTASection"
@@ -125,7 +125,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* Highlights */}
+      {/* Highlights — Embedded Instagram Reels */}
       <section className="bg-brand-elevated py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal className="text-center mb-16 max-w-2xl mx-auto">
@@ -136,70 +136,29 @@ export default async function AboutPage() {
             <div className="mt-6 mx-auto w-12 h-px bg-brand-gold" />
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              {
-                category: "Politicians",
-                links: [
-                  { label: "Political event highlight", href: "https://www.instagram.com/emcee_sravz/reel/DKbMed7AqPO/?hl=en" },
-                  { label: "Political event reel", href: "https://www.instagram.com/sravanthi_prattipati/reel/DKb0YaqAega/?hl=en" },
-                  { label: "Political event reel", href: "https://www.instagram.com/sravanthi_prattipati/reel/DKgQzP2geFm/?hl=en" },
-                ],
-              },
-              {
-                category: "Celebrities",
-                links: [
-                  { label: "Celebrity event reel", href: "https://www.instagram.com/reel/DJTBdGeMgm6/" },
-                  { label: "Celebrity event reel", href: "https://www.instagram.com/reel/DJQeLZZNPW1/" },
-                  { label: "Celebrity event reel", href: "https://www.instagram.com/sravanthi_prattipati/reel/DNEyASRgvVM/?hl=en" },
-                ],
-              },
-              {
-                category: "Concerts",
-                links: [
-                  { label: "Concert reel", href: "https://www.instagram.com/reel/DM_pL_utZWL/" },
-                  { label: "Concert reel", href: "https://www.instagram.com/reel/C4O06RKutGO/" },
-                  { label: "Concert reel", href: "https://www.instagram.com/reel/DAHrl68tYva/" },
-                ],
-              },
-              {
-                category: "Beauty Pageant",
-                links: [
-                  { label: "Miss Telugu USA", href: "https://www.instagram.com/missteluguusaorg/reel/DJsQbGzyHXr/?hl=en" },
-                ],
-              },
-              {
-                category: "Cultural Events",
-                links: [
-                  { label: "Cultural event reel", href: "https://www.instagram.com/reel/C-txGqrt4BH/" },
-                ],
-              },
-              {
-                category: "RJ & Radio",
-                links: [
-                  { label: "RJ reel", href: "https://www.instagram.com/reel/DKA4zOttDk4/" },
-                ],
-              },
-            ].map((group, i) => (
-              <ScrollReveal key={group.category} delay={i * 0.08}>
-                <div className="bg-white border border-brand-border p-6 h-full hover:border-brand-gold/40 transition-all duration-300">
-                  <h3 className="font-display text-xl text-brand-text font-light mb-4">{group.category}</h3>
-                  <ul className="space-y-3">
-                    {group.links.map((link, j) => (
-                      <li key={j}>
-                        <a
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-sm text-brand-muted hover:text-brand-gold transition-colors"
-                        >
-                          <Instagram size={14} className="text-brand-gold shrink-0" />
-                          <span>{link.label}</span>
-                          <ExternalLink size={12} className="shrink-0 opacity-50" />
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+              { category: "Politicians", shortcode: "DKbMed7AqPO" },
+              { category: "Celebrities", shortcode: "DJTBdGeMgm6" },
+              { category: "Concerts", shortcode: "DM_pL_utZWL" },
+              { category: "Beauty Pageant", shortcode: "DJsQbGzyHXr" },
+              { category: "Cultural Events", shortcode: "C-txGqrt4BH" },
+              { category: "RJ & Radio", shortcode: "DKA4zOttDk4" },
+            ].map((item, i) => (
+              <ScrollReveal key={item.category} delay={i * 0.08}>
+                <div className="bg-white border border-brand-border overflow-hidden hover:border-brand-gold/40 transition-all duration-300">
+                  <div className="p-4 pb-0">
+                    <h3 className="font-display text-xl text-brand-text font-light text-center">{item.category}</h3>
+                  </div>
+                  <iframe
+                    src={`https://www.instagram.com/reel/${item.shortcode}/embed/`}
+                    className="w-full border-0"
+                    height="480"
+                    scrolling="no"
+                    allowTransparency
+                    allow="encrypted-media"
+                    title={`${item.category} reel`}
+                  />
                 </div>
               </ScrollReveal>
             ))}
