@@ -296,33 +296,6 @@ export default function LeadershipLaunchpadPage() {
         </div>
       </section>
 
-      {/* Final Leadership Showcase */}
-      <section className="bg-brand-elevated py-24 md:py-32">
-        <div className="max-w-4xl mx-auto px-6">
-          <ScrollReveal className="text-center mb-12 max-w-2xl mx-auto">
-            <Mic size={40} className="text-brand-gold mx-auto mb-4" />
-            <h2 className="font-display text-4xl md:text-5xl font-light text-brand-text leading-[1.1]">
-              Final Leadership Showcase
-            </h2>
-            <div className="mt-6 mx-auto w-12 h-px bg-brand-gold" />
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.1} className="text-center">
-            <p className="text-brand-muted text-lg mb-10">
-              Students host or present at a mock event simulation, including:
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
-              {showcaseItems.map((item, i) => (
-                <div key={i} className="flex items-center gap-3 text-brand-muted border border-brand-border bg-white px-5 py-4">
-                  <Rocket size={16} className="text-brand-gold shrink-0" />
-                  <span className="text-sm">{item}</span>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* Why Leadership Launchpad Works */}
       <section className="bg-brand-bg py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
