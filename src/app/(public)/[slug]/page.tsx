@@ -39,10 +39,10 @@ export default async function LegalPage({ params }: Props) {
   const title = slug.split("-").map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ")
 
   return (
-    <section className="bg-brand-black pt-32 pb-24 min-h-screen">
+    <section className="bg-brand-bg pt-32 pb-24 min-h-screen">
       <div className="max-w-3xl mx-auto px-6">
         <ScrollReveal>
-          <h1 className="font-display text-5xl md:text-6xl font-light text-brand-cream leading-[1.05] mb-4">
+          <h1 className="font-display text-5xl md:text-6xl font-light text-brand-text leading-[1.05] mb-4">
             {page?.title || title}
           </h1>
           {page?.updatedAt && (
@@ -51,7 +51,7 @@ export default async function LegalPage({ params }: Props) {
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <div className="prose prose-invert max-w-none prose-p:text-brand-muted prose-headings:text-brand-cream prose-headings:font-display prose-headings:font-light prose-a:text-brand-gold">
+          <div className="prose max-w-none prose-p:text-brand-muted prose-headings:text-brand-text prose-headings:font-display prose-headings:font-light prose-a:text-brand-gold">
             {page?.content ? (
               <p className="text-brand-muted leading-relaxed">
                 {typeof page.content === "string" ? page.content : "Policy content will appear here once added through the admin dashboard."}

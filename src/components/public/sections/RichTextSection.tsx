@@ -61,15 +61,15 @@ export function RichTextSection({ content }: RichTextSectionProps) {
   if (!html) return null
 
   return (
-    <section className="bg-brand-black py-16">
+    <section className="bg-brand-bg py-16">
       <div className="max-w-3xl mx-auto px-6">
         <ScrollReveal>
           <div
-            className="prose prose-invert prose-lg max-w-none
-              prose-headings:font-display prose-headings:font-light prose-headings:text-brand-cream
+            className="prose prose-lg max-w-none
+              prose-headings:font-display prose-headings:font-light prose-headings:text-brand-text
               prose-p:text-brand-muted prose-p:leading-relaxed
               prose-a:text-brand-gold prose-a:no-underline hover:prose-a:underline
-              prose-strong:text-brand-cream
+              prose-strong:text-brand-text
               prose-blockquote:border-l-brand-gold prose-blockquote:text-brand-muted
               prose-code:text-brand-gold prose-code:bg-brand-elevated prose-code:px-1 prose-code:rounded
               prose-hr:border-brand-border

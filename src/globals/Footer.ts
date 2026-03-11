@@ -10,7 +10,7 @@ export const FooterGlobal: GlobalConfig = {
     read: () => true,
   },
   fields: [
-    { name: "tagline", type: "text", defaultValue: "Helping ambitious professionals become the speakers people remember." },
+    { name: "tagline", type: "text", defaultValue: "Professional emcee & speaker coach. Fulfilling events, one at a time." },
     {
       name: "columns",
       type: "array",
@@ -29,10 +29,8 @@ export const FooterGlobal: GlobalConfig = {
         {
           heading: "Services",
           links: [
-            { label: "1:1 Coaching", href: "/services/private-coaching" },
-            { label: "Group Program", href: "/services/group-program" },
-            { label: "VIP Intensive", href: "/services/vip-intensive" },
-            { label: "Speaking", href: "/services/speaking" },
+            { label: "Emcee & Hosting", href: "/services/emcee-hosting" },
+            { label: "Speaking Coaching", href: "/services/speaking-coaching" },
           ],
         },
         {
@@ -54,6 +52,6 @@ export const FooterGlobal: GlobalConfig = {
         },
       ],
     },
-    { name: "bottomText", type: "text", defaultValue: "© 2024 Sravanthi Prattipati. All rights reserved." },
+    { name: "bottomText", type: "text", defaultValue: "© 2026 Sravanthi Prattipati. All rights reserved." },
   ],
 }

@@ -40,7 +40,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 function renderLexicalContent(content: any): string {
   if (!content || typeof content === "string") return content || ""
 
-  // Payload Lexical content is a JSON object with a root node
   if (content.root && content.root.children) {
     return content.root.children.map((node: any) => lexicalNodeToHtml(node)).join("")
   }
@@ -83,7 +82,6 @@ function lexicalNodeToHtml(node: any): string {
     case "text": {
       let text = node.text || ""
       if (!text) return ""
-      // Apply text formats
       if (node.format) {
         if (node.format & 1) text = `<strong>${text}</strong>`
         if (node.format & 2) text = `<em>${text}</em>`
@@ -98,7 +96,6 @@ function lexicalNodeToHtml(node: any): string {
       return "<hr/>"
 
     default:
-      // For unknown types, try to render children
       if (node.children) {
         return (node.children as any[]).map(lexicalNodeToHtml).join("")
       }
@@ -151,7 +148,7 @@ export default async function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <article className="bg-brand-black pt-32 pb-24">
+      <article className="bg-brand-bg pt-32 pb-24">
         <div className="max-w-3xl mx-auto px-6">
           <ScrollReveal>
             <Link
@@ -163,7 +160,7 @@ export default async function BlogPostPage({ params }: Props) {
             {post.publishedAt && (
               <p className="text-brand-muted text-sm mb-4">{formatDate(post.publishedAt)}</p>
             )}
-            <h1 className="font-display text-4xl md:text-6xl font-light text-brand-cream leading-[1.1] mb-6">
+            <h1 className="font-display text-4xl md:text-6xl font-light text-brand-text leading-[1.1] mb-6">
               {post.title}
             </h1>
             {post.excerpt && (
@@ -189,11 +186,11 @@ export default async function BlogPostPage({ params }: Props) {
           <ScrollReveal delay={0.2}>
             {renderedContent ? (
               <div
-                className="prose prose-invert prose-lg max-w-none
-                  prose-headings:font-display prose-headings:font-light prose-headings:text-brand-cream
+                className="prose prose-lg max-w-none
+                  prose-headings:font-display prose-headings:font-light prose-headings:text-brand-text
                   prose-p:text-brand-muted prose-p:leading-relaxed
                   prose-a:text-brand-gold prose-a:no-underline hover:prose-a:underline
-                  prose-strong:text-brand-cream
+                  prose-strong:text-brand-text
                   prose-em:text-brand-muted
                   prose-blockquote:border-l-brand-gold prose-blockquote:text-brand-muted prose-blockquote:font-display prose-blockquote:italic
                   prose-code:text-brand-gold prose-code:bg-brand-elevated prose-code:px-1 prose-code:rounded
@@ -203,8 +200,8 @@ export default async function BlogPostPage({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: renderedContent }}
               />
             ) : (
-              <div className="prose prose-invert prose-lg max-w-none
-                prose-headings:font-display prose-headings:font-light prose-headings:text-brand-cream
+              <div className="prose prose-lg max-w-none
+                prose-headings:font-display prose-headings:font-light prose-headings:text-brand-text
                 prose-p:text-brand-muted prose-p:leading-relaxed">
                 <p className="text-brand-muted leading-relaxed">
                   Full article content will appear here once published through the admin dashboard.
@@ -216,7 +213,7 @@ export default async function BlogPostPage({ params }: Props) {
           {post.author && (
             <ScrollReveal delay={0.3} className="mt-16 pt-8 border-t border-brand-border">
               <p className="text-brand-muted text-sm">
-                Written by <span className="text-brand-cream">{post.author}</span>
+                Written by <span className="text-brand-text">{post.author}</span>
               </p>
             </ScrollReveal>
           )}

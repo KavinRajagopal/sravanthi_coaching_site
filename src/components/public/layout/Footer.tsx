@@ -23,10 +23,9 @@ const defaultColumns: FooterColumn[] = [
   {
     heading: "Services",
     links: [
-      { label: "1:1 Coaching", href: "/services/private-coaching" },
-      { label: "Group Program", href: "/services/group-program" },
-      { label: "VIP Intensive", href: "/services/vip-intensive" },
-      { label: "Speaking", href: "/services/speaking" },
+      { label: "Emcee & Hosting", href: "/services" },
+      { label: "Speaking Coaching", href: "/services" },
+      { label: "Book a Call", href: "/book-call" },
     ],
   },
   {
@@ -35,7 +34,6 @@ const defaultColumns: FooterColumn[] = [
       { label: "About", href: "/about" },
       { label: "Blog", href: "/blog" },
       { label: "Testimonials", href: "/testimonials" },
-      { label: "Book a Call", href: "/book-call" },
     ],
   },
   {
@@ -49,14 +47,14 @@ const defaultColumns: FooterColumn[] = [
 ]
 
 export function Footer({
-  tagline = "Helping ambitious professionals become the speakers people remember.",
+  tagline = "Professional emcee, hosting services, and speaker coaching.",
   columns = defaultColumns,
-  bottomText = "© 2024 Sravanthi Prattipati. All rights reserved.",
+  bottomText = "\u00A9 2026 Sravanthi Prattipati. All rights reserved.",
   siteName = "Sravanthi",
   socialLinks = {},
 }: FooterProps) {
   return (
-    <footer className="bg-brand-black border-t border-brand-border">
+    <footer className="bg-brand-dark border-t border-brand-dark">
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand column */}
@@ -64,32 +62,32 @@ export function Footer({
             <Link href="/" className="font-display text-2xl text-brand-cream font-light tracking-wide">
               {siteName}
             </Link>
-            <p className="mt-4 text-brand-muted text-sm leading-relaxed max-w-xs">
+            <p className="mt-4 text-brand-cream/60 text-sm leading-relaxed max-w-xs">
               {tagline}
             </p>
             {/* Social links */}
             <div className="mt-6 flex gap-4">
               {socialLinks.linkedin && (
                 <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer"
-                  className="text-brand-muted hover:text-brand-gold transition-colors" aria-label="LinkedIn">
+                  className="text-brand-cream/50 hover:text-brand-gold transition-colors" aria-label="LinkedIn">
                   <Linkedin size={18} />
                 </a>
               )}
               {socialLinks.instagram && (
                 <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer"
-                  className="text-brand-muted hover:text-brand-gold transition-colors" aria-label="Instagram">
+                  className="text-brand-cream/50 hover:text-brand-gold transition-colors" aria-label="Instagram">
                   <Instagram size={18} />
                 </a>
               )}
               {socialLinks.twitter && (
                 <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer"
-                  className="text-brand-muted hover:text-brand-gold transition-colors" aria-label="Twitter">
+                  className="text-brand-cream/50 hover:text-brand-gold transition-colors" aria-label="Twitter">
                   <Twitter size={18} />
                 </a>
               )}
               {socialLinks.youtube && (
                 <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer"
-                  className="text-brand-muted hover:text-brand-gold transition-colors" aria-label="YouTube">
+                  className="text-brand-cream/50 hover:text-brand-gold transition-colors" aria-label="YouTube">
                   <Youtube size={18} />
                 </a>
               )}
@@ -106,7 +104,7 @@ export function Footer({
                 {col.links.map((link) => (
                   <li key={link.label}>
                     <Link href={link.href}
-                      className="text-brand-muted hover:text-brand-gold text-sm transition-colors">
+                      className="text-brand-cream/50 hover:text-brand-gold text-sm transition-colors">
                       {link.label}
                     </Link>
                   </li>
@@ -116,8 +114,8 @@ export function Footer({
           ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-brand-border">
-          <p className="text-brand-muted text-xs text-center">{bottomText}</p>
+        <div className="mt-12 pt-8 border-t border-brand-cream/10">
+          <p className="text-brand-cream/40 text-xs text-center">{bottomText}</p>
         </div>
       </div>
     </footer>

@@ -9,15 +9,18 @@ import { StatsSection } from "@/components/public/sections/StatsSection"
 import { BlogPreviewSection } from "@/components/public/sections/BlogPreviewSection"
 import { FAQSection } from "@/components/public/sections/FAQSection"
 import { RichTextSection } from "@/components/public/sections/RichTextSection"
+import { WhySravanthiSection } from "@/components/public/sections/WhySravanthiSection"
+import { InstagramSection } from "@/components/public/sections/InstagramSection"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Block = { blockType: string; [key: string]: any }
 
 interface BlockRendererProps {
   blocks: Block[]
+  siteSettings?: any
 }
 
-export function BlockRenderer({ blocks }: BlockRendererProps) {
+export function BlockRenderer({ blocks, siteSettings }: BlockRendererProps) {
   return (
     <>
       {blocks.map((block, i) => {
@@ -33,7 +36,7 @@ export function BlockRenderer({ blocks }: BlockRendererProps) {
           case "testimonials":
             return <TestimonialsSection key={i} {...block} />
           case "speaking":
-            return <SpeakingSection key={i} {...block} />
+            return <SpeakingSection key={i} {...block} elfsightWidgetId={siteSettings?.elfsightWidgetId} />
           case "cta":
             return <CTASection key={i} {...block} />
           case "stats":
@@ -44,6 +47,10 @@ export function BlockRenderer({ blocks }: BlockRendererProps) {
             return <FAQSection key={i} {...block} />
           case "rich-text":
             return <RichTextSection key={i} {...block} />
+          case "why-sravanthi":
+            return <WhySravanthiSection key={i} {...block} />
+          case "instagram":
+            return <InstagramSection key={i} {...block} instagramUrl={block.instagramUrl || siteSettings?.instagramUrl || siteSettings?.socialLinks?.instagram} />
           default:
             return null
         }

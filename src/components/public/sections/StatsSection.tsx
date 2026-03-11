@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion"
+import { useInView, animate } from "framer-motion"
 import { useRef, useEffect, useState } from "react"
 import { ScrollReveal } from "@/components/public/shared/ScrollReveal"
 
@@ -36,26 +36,26 @@ function AnimatedStat({ value }: { value: string }) {
   }, [isInView, numericPart])
 
   return (
-    <span ref={ref} className="font-display text-5xl md:text-6xl text-brand-cream font-light">
+    <span ref={ref} className="font-display text-5xl md:text-6xl text-brand-text font-light">
       {numericPart !== null ? `${displayed}${suffix}` : value}
     </span>
   )
 }
 
 const defaultStats: Stat[] = [
-  { value: "200+", label: "Speakers Coached", description: "Professionals transformed" },
-  { value: "10+", label: "Years Experience", description: "In speaker development" },
-  { value: "30+", label: "Global Stages", description: "Panels, keynotes & podcasts" },
-  { value: "95%", label: "Satisfaction Rate", description: "Client success stories" },
+  { value: "100+", label: "Events Hosted", description: "Corporate & social events" },
+  { value: "50+", label: "Corporate Clients", description: "Trusted partnerships" },
+  { value: "5+", label: "Years Experience", description: "In emcee & speaker coaching" },
+  { value: "10+", label: "Industries", description: "Across diverse sectors" },
 ]
 
 export function StatsSection({ sectionTitle, stats = defaultStats }: StatsSectionProps) {
   return (
-    <section className="bg-brand-black border-y border-brand-border py-20 md:py-24">
+    <section className="bg-brand-bg border-y border-brand-border py-20 md:py-24">
       <div className="max-w-7xl mx-auto px-6">
         {sectionTitle && (
           <ScrollReveal className="text-center mb-12">
-            <h2 className="font-display text-3xl text-brand-cream font-light">{sectionTitle}</h2>
+            <h2 className="font-display text-3xl text-brand-text font-light">{sectionTitle}</h2>
           </ScrollReveal>
         )}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">

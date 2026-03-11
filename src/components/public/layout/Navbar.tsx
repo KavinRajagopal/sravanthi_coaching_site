@@ -41,16 +41,16 @@ export function Navbar({ items = defaultItems, siteName = "Sravanthi" }: NavbarP
       <motion.nav
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
         className={cn(
           "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
           scrolled
-            ? "bg-brand-black/90 backdrop-blur-md border-b border-brand-border"
+            ? "bg-white/90 backdrop-blur-md border-b border-brand-border shadow-sm"
             : "bg-transparent"
         )}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="font-display text-2xl text-brand-cream font-light tracking-wide hover:text-brand-gold transition-colors">
+          <Link href="/" className="font-display text-2xl text-brand-text font-light tracking-wide hover:text-brand-gold transition-colors">
             {siteName}
           </Link>
 
@@ -61,7 +61,7 @@ export function Navbar({ items = defaultItems, siteName = "Sravanthi" }: NavbarP
                 <Button
                   key={item.label}
                   asChild
-                  className="bg-transparent border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-all duration-300 px-6 rounded-none font-sans text-sm tracking-widest uppercase"
+                  className="bg-transparent border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-white transition-all duration-300 px-6 rounded-none font-sans text-sm tracking-widest uppercase"
                 >
                   <Link href={item.href} target={item.openInNewTab ? "_blank" : undefined}>
                     {item.label}
@@ -72,7 +72,7 @@ export function Navbar({ items = defaultItems, siteName = "Sravanthi" }: NavbarP
                   key={item.label}
                   href={item.href}
                   target={item.openInNewTab ? "_blank" : undefined}
-                  className="text-brand-muted hover:text-brand-cream font-sans text-sm tracking-widest uppercase transition-colors relative group"
+                  className="text-brand-muted hover:text-brand-text font-sans text-sm tracking-widest uppercase transition-colors relative group"
                 >
                   {item.label}
                   <span className="absolute -bottom-1 left-0 h-px w-0 bg-brand-gold transition-all duration-300 group-hover:w-full" />
@@ -83,7 +83,7 @@ export function Navbar({ items = defaultItems, siteName = "Sravanthi" }: NavbarP
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-brand-cream p-2"
+            className="md:hidden text-brand-text p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -100,10 +100,10 @@ export function Navbar({ items = defaultItems, siteName = "Sravanthi" }: NavbarP
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-30 bg-brand-black flex flex-col items-center justify-center gap-8 md:hidden"
+            className="fixed inset-0 z-30 bg-brand-bg flex flex-col items-center justify-center gap-8 md:hidden"
           >
             <button
-              className="absolute top-5 right-6 text-brand-cream"
+              className="absolute top-5 right-6 text-brand-text"
               onClick={() => setMobileOpen(false)}
             >
               <X size={28} />
@@ -117,7 +117,7 @@ export function Navbar({ items = defaultItems, siteName = "Sravanthi" }: NavbarP
                   "font-display text-3xl font-light tracking-wide transition-colors",
                   item.isButton
                     ? "text-brand-gold hover:text-brand-gold-light"
-                    : "text-brand-cream hover:text-brand-gold"
+                    : "text-brand-text hover:text-brand-gold"
                 )}
               >
                 {item.label}

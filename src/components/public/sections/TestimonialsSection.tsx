@@ -28,23 +28,24 @@ const defaultTestimonials: Testimonial[] = [
 ]
 
 export function TestimonialsSection({
-  sectionTitle = "What speakers are saying",
+  sectionTitle = "What clients are saying",
   testimonials = defaultTestimonials,
 }: TestimonialsSectionProps) {
   return (
-    <section id="testimonials" className="bg-brand-surface py-24 md:py-32">
+    <section id="testimonials" className="bg-brand-elevated py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6">
         <ScrollReveal className="text-center mb-16 max-w-2xl mx-auto">
-          <p className="text-brand-gold font-sans text-xs tracking-[0.3em] uppercase mb-4">Success Stories</p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-brand-cream leading-[1.1]">
+          <p className="text-brand-muted font-sans text-xs tracking-[0.3em] uppercase mb-4">Testimonials</p>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-brand-text leading-[1.1]">
             {sectionTitle}
           </h2>
+          <div className="mt-6 mx-auto w-12 h-px bg-brand-gold" />
         </ScrollReveal>
 
         <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
           {testimonials.map((t, i) => (
             <ScrollReveal key={t.id} delay={(i % 3) * 0.1} className="break-inside-avoid">
-              <div className="bg-brand-elevated border border-brand-border p-8 hover:border-brand-gold/40 transition-all duration-300">
+              <div className="bg-white border border-brand-border p-8 hover:border-brand-gold/40 transition-all duration-300">
                 {/* Stars */}
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.rating || 5 }).map((_, j) => (
@@ -55,7 +56,7 @@ export function TestimonialsSection({
                 {/* Decorative quote mark */}
                 <div className="font-display text-6xl text-brand-gold/20 leading-none -mb-2">&ldquo;</div>
 
-                <blockquote className="font-display text-lg text-brand-cream font-light leading-relaxed italic mb-6">
+                <blockquote className="font-display text-lg text-brand-text font-light leading-relaxed italic mb-6">
                   {t.quote}
                 </blockquote>
 
@@ -78,7 +79,7 @@ export function TestimonialsSection({
                     </div>
                   )}
                   <div>
-                    <p className="text-brand-cream text-sm font-medium">{t.clientName}</p>
+                    <p className="text-brand-text text-sm font-medium">{t.clientName}</p>
                     <p className="text-brand-muted text-xs">
                       {t.clientTitle}{t.company ? `, ${t.company}` : ""}
                     </p>

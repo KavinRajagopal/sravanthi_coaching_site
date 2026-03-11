@@ -40,100 +40,58 @@ export async function GET(req: NextRequest) {
       errors.push(`❌ Admin user: ${err.message}`)
     }
 
-    // ─── Services ──────────────────────────────────────────────────────────
+    // ─── Services (delete old + recreate) ─────────────────────────────────
     try {
-      const existing = await payload.find({ collection: "services", limit: 1 })
-      if (existing.docs.length === 0) {
-        const servicesData = [
-          {
-            title: "Signature 1:1 Coaching",
-            slug: "private-coaching",
-            tagline: "The deep-dive transformation",
-            summary: "An intimate, high-touch coaching experience tailored entirely to your speaking goals, stage presence challenges, and personal brand vision.",
-            outcomes: [
-              { outcome: "Weekly 1:1 coaching sessions" },
-              { outcome: "Personalized speaker development roadmap" },
-              { outcome: "Video review & detailed feedback" },
-              { outcome: "Speaking opportunity strategy" },
-              { outcome: "On-camera performance coaching" },
-            ],
-            targetAudience: "Ambitious professionals who want deep, lasting transformation in their speaking presence and are ready to invest fully in their growth.",
-            format: "Virtual 1:1 Sessions",
-            duration: "3 or 6 months",
-            ctaLabel: "Apply Now",
-            ctaHref: "/book-call",
-            featured: true,
-            order: 1,
-            status: "published",
-          },
-          {
-            title: "Group Coaching Program",
-            slug: "group-program",
-            tagline: "Grow with your peers",
-            summary: "A cohort-based program for professionals who want expert guidance, peer accountability, and a community of driven communicators.",
-            outcomes: [
-              { outcome: "Weekly group coaching calls" },
-              { outcome: "Live practice & feedback rounds" },
-              { outcome: "Private community access" },
-              { outcome: "Resource library & templates" },
-            ],
-            targetAudience: "Professionals who thrive with community support and want to develop their speaking skills alongside a cohort of peers.",
-            format: "Group + 1:1 Elements",
-            duration: "8 weeks",
-            ctaLabel: "Join Waitlist",
-            ctaHref: "/book-call",
-            featured: false,
-            order: 2,
-            status: "published",
-          },
-          {
-            title: "VIP Intensive Day",
-            slug: "vip-intensive",
-            tagline: "Accelerated transformation",
-            summary: "A focused full-day experience to break through your biggest speaking blocks, refine your stage presence, and leave with complete clarity.",
-            outcomes: [
-              { outcome: "Full-day private coaching session" },
-              { outcome: "Complete speaker identity deep-work" },
-              { outcome: "On-camera performance coaching" },
-              { outcome: "30-day follow-up support" },
-            ],
-            targetAudience: "Speakers who need rapid results — preparing for a major event, TEDx talk, keynote, or career-defining moment.",
-            format: "Virtual or In-Person",
-            duration: "1 intensive day",
-            ctaLabel: "Book Your Day",
-            ctaHref: "/book-call",
-            featured: false,
-            order: 3,
-            status: "published",
-          },
-          {
-            title: "Book Sravanthi to Speak",
-            slug: "speaking",
-            tagline: "Bring her to your event",
-            summary: "Book Sravanthi as a keynote speaker, workshop facilitator, or panelist for your organization, conference, or leadership event.",
-            outcomes: [
-              { outcome: "Keynote presentations" },
-              { outcome: "Workshop facilitation" },
-              { outcome: "Panel participation" },
-              { outcome: "Corporate training sessions" },
-            ],
-            targetAudience: "Event organizers, corporate HR teams, and conference programmers looking for an impactful speaker on communication and leadership presence.",
-            format: "In-Person or Virtual",
-            duration: "Custom",
-            ctaLabel: "Enquire Now",
-            ctaHref: "/book-call",
-            featured: false,
-            order: 4,
-            status: "published",
-          },
-        ]
-        for (const service of servicesData) {
-          await payload.create({ collection: "services", data: service })
-        }
-        results.push("✅ Services created (4)")
-      } else {
-        results.push("⏭️ Services already exist")
+      const existing = await payload.find({ collection: "services", limit: 100 })
+      for (const doc of existing.docs) {
+        await payload.delete({ collection: "services", id: doc.id })
       }
+      const servicesData = [
+        {
+          title: "Emcee & Hosting Services",
+          slug: "emcee-hosting",
+          tagline: "Your event, elevated",
+          summary: "Professional emcee for weddings, Sangeets, Sweet 16s, coming-of-age celebrations, corporate galas, conferences, and more. Engaging audiences with warmth, energy, and seamless flow.",
+          outcomes: [
+            { outcome: "Weddings, Sangeets & Indian celebrations" },
+            { outcome: "Corporate events, galas & conferences" },
+            { outcome: "Celebrity & VIP interviews" },
+            { outcome: "Birthday parties & milestone events" },
+          ],
+          targetAudience: "Families, event organizers, and corporate teams looking for a professional emcee who brings warmth, bilingual fluency, and personalized preparation to every event.",
+          format: "In-Person or Virtual",
+          duration: "Custom",
+          ctaLabel: "Enquire Now",
+          ctaHref: "/book-call",
+          featured: true,
+          order: 1,
+          status: "published",
+        },
+        {
+          title: "Speaking Coaching & Workshops",
+          slug: "speaking-coaching",
+          tagline: "Find your voice",
+          summary: "1:1 coaching and group workshops to develop your speaking presence, confidence, and presentation skills for any stage or boardroom.",
+          outcomes: [
+            { outcome: "1:1 speaker coaching" },
+            { outcome: "Group workshops" },
+            { outcome: "Presentation skills training" },
+            { outcome: "Corporate training sessions" },
+          ],
+          targetAudience: "Professionals who want to develop their speaking confidence and presentation skills.",
+          format: "Virtual or In-Person",
+          duration: "Custom",
+          ctaLabel: "Book a Call",
+          ctaHref: "/book-call",
+          featured: false,
+          order: 2,
+          status: "published",
+        },
+      ]
+      for (const service of servicesData) {
+        await payload.create({ collection: "services", data: service })
+      }
+      results.push("✅ Services recreated (2 — Emcee + Speaking Coaching)")
     } catch (err: any) {
       errors.push(`❌ Services: ${err.message}`)
     }
@@ -193,36 +151,9 @@ export async function GET(req: NextRequest) {
       const existing = await payload.find({ collection: "blog-posts", limit: 1 })
       if (existing.docs.length === 0) {
         const posts = [
-          {
-            title: "5 Habits That Separate Memorable Speakers from Forgettable Ones",
-            slug: "5-habits-memorable-speakers",
-            excerpt: "Discover the daily practices that transform ordinary communicators into speakers who leave lasting impressions.",
-            content: emptyLexical,
-            author: "Sravanthi Prattipati",
-            status: "published",
-            publishedAt: new Date("2024-03-01").toISOString(),
-            categories: categoryIds["speaking-tips"] ? [categoryIds["speaking-tips"]] : [],
-          },
-          {
-            title: "The Stage Fright Reframe: How to Turn Nerves into Presence",
-            slug: "stage-fright-reframe",
-            excerpt: "What if your pre-speaking anxiety wasn't a problem to solve, but a signal pointing toward something powerful?",
-            content: emptyLexical,
-            author: "Sravanthi Prattipati",
-            status: "published",
-            publishedAt: new Date("2024-02-15").toISOString(),
-            categories: categoryIds["confidence"] ? [categoryIds["confidence"]] : [],
-          },
-          {
-            title: "Why Your Speaker Identity Matters More Than Your Slides",
-            slug: "speaker-identity-matters",
-            excerpt: "The most impactful speakers don't just deliver content. They deliver themselves. Here's how to find and own your unique speaker identity.",
-            content: emptyLexical,
-            author: "Sravanthi Prattipati",
-            status: "published",
-            publishedAt: new Date("2024-02-01").toISOString(),
-            categories: categoryIds["personal-branding"] ? [categoryIds["personal-branding"]] : [],
-          },
+          { title: "5 Habits That Separate Memorable Speakers from Forgettable Ones", slug: "5-habits-memorable-speakers", excerpt: "Discover the daily practices that transform ordinary communicators into speakers who leave lasting impressions.", content: emptyLexical, author: "Sravanthi Prattipati", status: "published", publishedAt: new Date("2026-01-15").toISOString(), categories: categoryIds["speaking-tips"] ? [categoryIds["speaking-tips"]] : [] },
+          { title: "The Stage Fright Reframe: How to Turn Nerves into Presence", slug: "stage-fright-reframe", excerpt: "What if your pre-speaking anxiety wasn't a problem to solve, but a signal pointing toward something powerful?", content: emptyLexical, author: "Sravanthi Prattipati", status: "published", publishedAt: new Date("2025-12-01").toISOString(), categories: categoryIds["confidence"] ? [categoryIds["confidence"]] : [] },
+          { title: "Why Your Speaker Identity Matters More Than Your Slides", slug: "speaker-identity-matters", excerpt: "The most impactful speakers don't just deliver content. They deliver themselves.", content: emptyLexical, author: "Sravanthi Prattipati", status: "published", publishedAt: new Date("2025-11-01").toISOString(), categories: categoryIds["personal-branding"] ? [categoryIds["personal-branding"]] : [] },
         ]
         for (const post of posts) {
           await payload.create({ collection: "blog-posts", data: post as any })
@@ -250,38 +181,101 @@ export async function GET(req: NextRequest) {
       errors.push(`❌ Legal pages: ${err.message}`)
     }
 
-    // ─── Homepage ──────────────────────────────────────────────────────────
+    // ─── Homepage (delete old + recreate) ─────────────────────────────────
     try {
       const existing = await payload.find({ collection: "pages", where: { slug: { equals: "home" } }, limit: 1 })
-      if (existing.docs.length === 0) {
-        const services = await payload.find({ collection: "services", limit: 10 })
-        const serviceIds = services.docs.map((s: any) => s.id)
-        const testimonials = await payload.find({ collection: "testimonials", limit: 6 })
-        const testimonialIds = testimonials.docs.map((t: any) => t.id)
-
-        await payload.create({
-          collection: "pages",
-          data: {
-            title: "Home",
-            slug: "home",
-            status: "published",
-            layout: [
-              { blockType: "hero", headline: "Become the speaker people remember.", subheadline: "Speaker coaching for ambitious professionals who are done playing small.", ctaPrimary: { label: "Book a Discovery Call", href: "/book-call" }, ctaSecondary: { label: "Explore Programs", href: "/services" } },
-              { blockType: "stats", stats: [{ value: "200+", label: "Speakers Coached", description: "Professionals transformed" }, { value: "10+", label: "Years Experience", description: "In speaker development" }, { value: "30+", label: "Global Stages", description: "Panels, keynotes & podcasts" }, { value: "95%", label: "Satisfaction Rate", description: "Client success stories" }] },
-              { blockType: "transformation", sectionTitle: "What changes when you work with Sravanthi", items: [{ icon: "mic", title: "Stage Presence", description: "Command any room with a magnetic, grounded energy that draws people in before you say a word." }, { icon: "user", title: "Speaker Identity", description: "Own a clear, compelling speaking persona that reflects your authentic voice and expertise." }, { icon: "shield", title: "Authentic Confidence", description: "Speak from genuine strength — not performance anxiety or people-pleasing habits." }, { icon: "activity", title: "Body Language & Voice", description: "Master non-verbal communication, vocal tone, and physical presence for maximum impact." }, { icon: "trending-up", title: "High-Visibility Brand", description: "Position yourself as a thought leader in your industry through strategic visibility." }, { icon: "heart", title: "Charisma & Connection", description: "Build real rapport with audiences that makes them lean in, remember you, and take action." }] },
-              { blockType: "programs", sectionTitle: "Ways to Work Together", subtitle: "Choose the path that fits where you are and where you want to go.", programs: serviceIds },
-              { blockType: "testimonials", sectionTitle: "What speakers are saying", testimonials: testimonialIds },
-              { blockType: "speaking", sectionTitle: "Sravanthi on the Stage", subtitle: "Speaker · Panelist · Podcast Guest", appearances: [{ event: "Women in Leadership Summit", date: "2024", topic: "Own Your Voice, Own the Room", type: "Conference" }, { event: "The Executive Edge Podcast", date: "2024", topic: "Building Executive Presence from the Inside Out", type: "Podcast" }, { event: "TEDx Regional Stage", date: "2023", topic: "The Silence Before the Speech", type: "Conference" }, { event: "Forbes Coaches Council", date: "2023", topic: "The 5 Pillars of Speaker Identity", type: "Panel" }, { event: "HR Innovation Summit", date: "2023", topic: "Communication as Leadership Currency", type: "Workshop" }, { event: "The Founders' Mic Podcast", date: "2022", topic: "From Engineer to Executive Communicator", type: "Podcast" }] },
-              { blockType: "blog-preview", sectionTitle: "Insights & Resources", subtitle: "Practical wisdom for speakers, leaders, and communicators.", postsCount: 3 },
-              { blockType: "cta", headline: "Ready to become the speaker people remember?", subtext: "Book a free discovery call and let's talk about your next stage.", ctaLabel: "Schedule a Discovery Call", ctaHref: "/book-call", backgroundStyle: "dark" },
-            ] as any,
-            seo: { title: "Sravanthi Prattipati | Speaker & Confidence Coach", description: "Become the speaker people remember. Speaker coaching for ambitious professionals — stage presence, speaker identity, and confidence coaching." },
-          },
-        })
-        results.push("✅ Homepage created with all blocks")
-      } else {
-        results.push("⏭️ Homepage already exists")
+      // Always delete and recreate to get latest content
+      for (const doc of existing.docs) {
+        await payload.delete({ collection: "pages", id: doc.id })
       }
+
+      const services = await payload.find({ collection: "services", limit: 10 })
+      const serviceIds = services.docs.map((s: any) => s.id)
+      const testimonials = await payload.find({ collection: "testimonials", limit: 6 })
+      const testimonialIds = testimonials.docs.map((t: any) => t.id)
+
+      await payload.create({
+        collection: "pages",
+        data: {
+          title: "Home",
+          slug: "home",
+          status: "published",
+          layout: [
+            {
+              blockType: "hero",
+              headline: "Sravanthi Prattipati",
+              subheadline: "From weddings and Sangeets to corporate galas and celebrity interviews — bringing warmth, energy, and seamless flow to every event.",
+              ctaPrimary: { label: "Book for Your Event", href: "/book-call" },
+              ctaSecondary: { label: "View Services", href: "/services" },
+            },
+            {
+              blockType: "stats",
+              stats: [
+                { value: "100+", label: "Events Hosted", description: "Corporate & social events" },
+                { value: "50+", label: "Corporate Clients", description: "Trusted partnerships" },
+                { value: "5+", label: "Years Experience", description: "In emcee & speaker coaching" },
+                { value: "10+", label: "Industries", description: "Across diverse sectors" },
+              ],
+            },
+            {
+              blockType: "why-sravanthi",
+              sectionTitle: "Why Sravanthi",
+              subtitle: "What makes every event special.",
+              items: [
+                { title: "Personalized Preparation", description: "Every event is different. Sravanthi personally prepares for each one — understanding the audience, the tone, and the goals to deliver a truly tailored experience.", iconName: "ClipboardList" },
+                { title: "Genuine Charisma", description: "A natural warmth and energy that connects with audiences instantly. Sravanthi makes every guest and attendee feel welcome and engaged.", iconName: "Heart" },
+                { title: "Bilingual — Telugu & English", description: "Fluent in both Telugu and English, Sravanthi seamlessly switches between languages to connect with diverse audiences at Indian celebrations and corporate events alike.", iconName: "Globe" },
+                { title: "Plans Games & Activities", description: "Not just hosting — Sravanthi plans and leads interactive games, icebreakers, and audience activities that keep the energy high throughout your event.", iconName: "Gamepad2" },
+                { title: "Weddings to Corporate Stages", description: "From intimate Sangeets and Sweet 16s to large-scale corporate galas and celebrity interviews — Sravanthi brings the right energy to every occasion.", iconName: "Mic" },
+                { title: "Memorable Moments", description: "Every event deserves moments that people talk about long after. Sravanthi creates those moments with spontaneity, humour, and heart.", iconName: "Sparkles" },
+              ],
+            },
+            {
+              blockType: "programs",
+              sectionTitle: "Services",
+              subtitle: "How we can work together.",
+              programs: serviceIds,
+            },
+            {
+              blockType: "speaking",
+              sectionTitle: "Past Events & Appearances",
+              subtitle: "Emcee · Speaker · Workshop Facilitator",
+              appearances: [
+                { event: "Grand Wedding Celebration", date: "2026", topic: "Wedding Emcee — Telugu & English", type: "Emcee" },
+                { event: "Tech Leadership Summit", date: "2026", topic: "Corporate Emcee & Host", type: "Emcee" },
+                { event: "Celebrity Interview Series", date: "2025", topic: "Interviewing actors & public figures", type: "Interview" },
+                { event: "Sangeet Night Celebration", date: "2025", topic: "Games, dances & entertainment", type: "Emcee" },
+                { event: "Corporate Innovation Gala", date: "2025", topic: "Awards ceremony host", type: "Emcee" },
+                { event: "Sweet 16 & Coming of Age", date: "2025", topic: "Milestone celebration host", type: "Emcee" },
+              ],
+            },
+            {
+              blockType: "testimonials",
+              sectionTitle: "What clients are saying",
+              testimonials: testimonialIds,
+            },
+            {
+              blockType: "instagram",
+              instagramUrl: "https://instagram.com/sravanthi",
+              handle: "@sravanthi",
+              subtitle: "Behind the scenes, event highlights, and speaking tips.",
+            },
+            {
+              blockType: "cta",
+              headline: "Ready to elevate your next event?",
+              subtext: "Book a free discovery call and let's talk about how we can work together.",
+              ctaLabel: "Schedule a Discovery Call",
+              ctaHref: "/book-call",
+              backgroundStyle: "dark",
+            },
+          ] as any,
+          seo: {
+            title: "Sravanthi Prattipati | Emcee & Speaker Coach",
+            description: "Professional emcee, hosting services, and speaker coaching. Fulfilling events, one at a time.",
+          },
+        },
+      })
+      results.push("✅ Homepage recreated with emcee-focused content")
     } catch (err: any) {
       errors.push(`❌ Homepage: ${err.message}`)
     }
@@ -309,8 +303,8 @@ export async function GET(req: NextRequest) {
           activeFlow: "direct",
           bookingUrl: "https://calendly.com/sravanthi",
           ctaLabel: "Schedule a Discovery Call",
-          pageHeadline: "Let's talk about your next stage",
-          pageSubtext: "Book a free 30-minute discovery call to explore how coaching can help you develop the stage presence, confidence, and speaking identity you've been building toward.",
+          pageHeadline: "Let's talk about your next event",
+          pageSubtext: "Book a free 30-minute discovery call to explore how we can work together to make your next event unforgettable.",
           successMessage: "Thank you! Your session is booked. Check your email for confirmation details.",
         },
       })

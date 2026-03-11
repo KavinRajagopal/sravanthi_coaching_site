@@ -4,8 +4,8 @@ export const SpeakingBlock: Block = {
   slug: "speaking",
   labels: { singular: "Speaking Section", plural: "Speaking Sections" },
   fields: [
-    { name: "sectionTitle", type: "text", defaultValue: "Sravanthi on the Stage" },
-    { name: "subtitle", type: "text", defaultValue: "Speaker · Panelist · Podcast Guest" },
+    { name: "sectionTitle", type: "text", defaultValue: "Past Events & Appearances" },
+    { name: "subtitle", type: "text", defaultValue: "Emcee · Speaker · Workshop Facilitator" },
     {
       name: "logos",
       type: "array",
@@ -21,13 +21,13 @@ export const SpeakingBlock: Block = {
         { name: "event", type: "text" },
         { name: "date", type: "text" },
         { name: "topic", type: "text" },
-        { name: "type", type: "select", options: ["Conference", "Podcast", "Panel", "Workshop", "Interview"] },
+        { name: "type", type: "select", options: ["Emcee", "Conference", "Podcast", "Panel", "Workshop", "Interview"] },
         { name: "link", type: "text" },
       ],
       defaultValue: [
-        { event: "Women in Leadership Summit", date: "2024", topic: "Own Your Voice, Own the Room", type: "Conference" },
-        { event: "The Executive Edge Podcast", date: "2024", topic: "Building Executive Presence from the Inside Out", type: "Podcast" },
-        { event: "TEDx Regional Stage", date: "2023", topic: "The Silence Before the Speech", type: "Conference" },
+        { event: "Grand Wedding Celebration", date: "2026", topic: "Wedding Emcee — Telugu & English", type: "Emcee" },
+        { event: "Tech Leadership Summit", date: "2026", topic: "Corporate Emcee & Host", type: "Emcee" },
+        { event: "Sangeet Night Celebration", date: "2025", topic: "Games, dances & entertainment", type: "Emcee" },
       ],
     },
   ],

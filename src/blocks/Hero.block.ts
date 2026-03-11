@@ -4,8 +4,8 @@ export const HeroBlock: Block = {
   slug: "hero",
   labels: { singular: "Hero Section", plural: "Hero Sections" },
   fields: [
-    { name: "headline", type: "text", required: true, defaultValue: "Become the speaker people remember" },
-    { name: "subheadline", type: "textarea", defaultValue: "Speaker coaching for ambitious professionals who are done playing small." },
+    { name: "headline", type: "text", required: true, defaultValue: "Sravanthi Prattipati" },
+    { name: "subheadline", type: "textarea", defaultValue: "Fulfilling events, one at a time." },
     {
       name: "ctaPrimary",
       type: "group",

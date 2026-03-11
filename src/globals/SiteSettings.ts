@@ -26,6 +26,8 @@ export const SiteSettings: GlobalConfig = {
         { name: "ctaLabel", type: "text", defaultValue: "Got it" },
       ],
     },
+    { name: "instagramUrl", type: "text", label: "Instagram Profile URL", admin: { description: "Full Instagram URL for the Instagram section on the homepage" } },
+    { name: "elfsightWidgetId", type: "text", label: "Elfsight Instagram Widget ID", admin: { description: "Widget ID from Elfsight (e.g. abc123-def456). Sign up at elfsight.com, create an Instagram Feed widget, and paste the ID here." } },
     {
       name: "socialLinks",
       type: "group",

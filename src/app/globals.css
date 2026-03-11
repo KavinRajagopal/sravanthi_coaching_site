@@ -48,16 +48,17 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
-  /* Brand design tokens */
-  --color-brand-black: #0A0A0A;
-  --color-brand-surface: #111111;
-  --color-brand-elevated: #1A1A1A;
-  --color-brand-gold: #C9A84C;
-  --color-brand-gold-light: #E8C96E;
-  --color-brand-gold-muted: #8B6914;
-  --color-brand-cream: #F5F0E8;
-  --color-brand-muted: #A89F8C;
-  --color-brand-border: #2A2520;
+  /* Brand design tokens — light, warm, minimalist */
+  --color-brand-bg: #F5F2ED;
+  --color-brand-surface: #FFFFFF;
+  --color-brand-elevated: #FAF8F5;
+  --color-brand-text: #3D3530;
+  --color-brand-muted: #8C8279;
+  --color-brand-gold: #B8860B;
+  --color-brand-gold-light: #D4A843;
+  --color-brand-border: #E8E3DA;
+  --color-brand-dark: #2C2520;
+  --color-brand-cream: #FAF8F5;
 
   /* Brand fonts */
   --font-display: var(--font-cormorant);
@@ -137,7 +138,8 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: #F5F2ED;
+    color: #3D3530;
   }
   html {
     scroll-behavior: smooth;
@@ -149,12 +151,12 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0A0A;
+  background: #F5F2ED;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C9A84C;
+  background: #B8860B;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #E8C96E;
+  background: #D4A843;
 }

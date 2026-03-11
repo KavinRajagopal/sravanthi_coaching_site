@@ -26,12 +26,14 @@ export function FAQSection({ sectionTitle = "Frequently Asked Questions", items 
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section className="bg-brand-black py-24 md:py-32">
+    <section className="bg-brand-bg py-24 md:py-32">
       <div className="max-w-3xl mx-auto px-6">
         <ScrollReveal className="text-center mb-16">
-          <h2 className="font-display text-4xl md:text-5xl font-light text-brand-cream leading-[1.1]">
+          <p className="text-brand-muted font-sans text-xs tracking-[0.3em] uppercase mb-4">FAQ</p>
+          <h2 className="font-display text-4xl md:text-5xl font-light text-brand-text leading-[1.1]">
             {sectionTitle}
           </h2>
+          <div className="mt-6 mx-auto w-12 h-px bg-brand-gold" />
         </ScrollReveal>
 
         <div className="divide-y divide-brand-border">
@@ -41,7 +43,7 @@ export function FAQSection({ sectionTitle = "Frequently Asked Questions", items 
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full flex items-start justify-between gap-4 py-6 text-left group"
               >
-                <span className="font-display text-xl text-brand-cream font-light group-hover:text-brand-gold transition-colors">
+                <span className="font-display text-xl text-brand-text font-light group-hover:text-brand-gold transition-colors">
                   {item.question}
                 </span>
                 <span className="text-brand-gold mt-1 shrink-0">

@@ -6,21 +6,17 @@ import { Footer } from "@/components/public/layout/Footer"
 import { CookieBanner } from "@/components/public/shared/CookieBanner"
 import { HeroSection } from "@/components/public/sections/HeroSection"
 import { StatsSection } from "@/components/public/sections/StatsSection"
-import { TransformationSection } from "@/components/public/sections/TransformationSection"
 import { ProgramsSection } from "@/components/public/sections/ProgramsSection"
 import { TestimonialsSection } from "@/components/public/sections/TestimonialsSection"
 import { SpeakingSection } from "@/components/public/sections/SpeakingSection"
-import { BlogPreviewSection } from "@/components/public/sections/BlogPreviewSection"
+import { WhySravanthiSection } from "@/components/public/sections/WhySravanthiSection"
+import { InstagramSection } from "@/components/public/sections/InstagramSection"
 import { CTASection } from "@/components/public/sections/CTASection"
 
-// NOTE: src/app/(public)/page.tsx also resolves to "/" and conflicts with this file.
-// One of the two must be deleted. This file (root page.tsx) takes precedence in Next.js.
-// Delete src/app/(public)/page.tsx after verifying this file works correctly.
-
 export const metadata: Metadata = {
-  title: "Sravanthi Prattipati | Speaker & Confidence Coach",
+  title: "Sravanthi Prattipati | Emcee & Speaker Coach",
   description:
-    "Become the speaker people remember. Speaker coaching for ambitious professionals — stage presence, speaker identity, and confidence coaching.",
+    "Professional emcee, hosting services, and speaker coaching. Fulfilling events, one at a time.",
 }
 
 export default async function HomePage() {
@@ -51,16 +47,16 @@ export default async function HomePage() {
 
   const mainContent =
     homePage?.layout && homePage.layout.length > 0 ? (
-      <BlockRenderer blocks={homePage.layout as any[]} />
+      <BlockRenderer blocks={homePage.layout as any[]} siteSettings={siteSettings} />
     ) : (
       <>
         <HeroSection />
         <StatsSection />
-        <TransformationSection />
+        <WhySravanthiSection />
         <ProgramsSection />
+        <SpeakingSection elfsightWidgetId={siteSettings?.elfsightWidgetId} />
         <TestimonialsSection />
-        <SpeakingSection />
-        <BlogPreviewSection />
+        <InstagramSection instagramUrl={siteSettings?.socialLinks?.instagram || siteSettings?.instagramUrl} />
         <CTASection />
       </>
     )

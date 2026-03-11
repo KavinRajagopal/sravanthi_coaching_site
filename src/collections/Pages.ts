@@ -10,6 +10,8 @@ import { StatsBlock } from "@/blocks/Stats.block"
 import { BlogPreviewBlock } from "@/blocks/BlogPreview.block"
 import { RichTextBlock } from "@/blocks/RichText.block"
 import { FAQBlock } from "@/blocks/FAQ.block"
+import { WhySravanthiBlock } from "@/blocks/WhySravanthi.block"
+import { InstagramBlock } from "@/blocks/Instagram.block"
 
 export const Pages: CollectionConfig = {
   slug: "pages",
@@ -58,6 +60,8 @@ export const Pages: CollectionConfig = {
         BlogPreviewBlock,
         RichTextBlock,
         FAQBlock,
+        WhySravanthiBlock,
+        InstagramBlock,
       ],
     },
     {

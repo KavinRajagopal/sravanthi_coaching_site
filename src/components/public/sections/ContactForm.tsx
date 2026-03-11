@@ -51,7 +51,7 @@ export function ContactForm() {
     return (
       <div className="border border-brand-gold bg-brand-elevated p-8 text-center">
         <CheckCircle className="text-brand-gold mx-auto mb-4" size={40} />
-        <h3 className="font-display text-2xl text-brand-cream font-light mb-2">Thank you!</h3>
+        <h3 className="font-display text-2xl text-brand-text font-light mb-2">Thank you!</h3>
         <p className="text-brand-muted">Your message has been received. Sravanthi will be in touch within 24 hours.</p>
       </div>
     )
@@ -61,25 +61,25 @@ export function ContactForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
       <div>
         <Label className="text-brand-muted text-xs tracking-widest uppercase mb-2 block">Full Name *</Label>
-        <Input {...register("name")} className="bg-brand-surface border-brand-border text-brand-cream rounded-none focus-visible:ring-brand-gold" placeholder="Your name" />
-        {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>}
+        <Input {...register("name")} className="bg-white border-brand-border text-brand-text rounded-none focus-visible:ring-brand-gold" placeholder="Your name" />
+        {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
       </div>
 
       <div>
         <Label className="text-brand-muted text-xs tracking-widest uppercase mb-2 block">Email *</Label>
-        <Input {...register("email")} type="email" className="bg-brand-surface border-brand-border text-brand-cream rounded-none focus-visible:ring-brand-gold" placeholder="your@email.com" />
-        {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
+        <Input {...register("email")} type="email" className="bg-white border-brand-border text-brand-text rounded-none focus-visible:ring-brand-gold" placeholder="your@email.com" />
+        {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
       </div>
 
       <div>
         <Label className="text-brand-muted text-xs tracking-widest uppercase mb-2 block">Company / Role</Label>
-        <Input {...register("role")} className="bg-brand-surface border-brand-border text-brand-cream rounded-none focus-visible:ring-brand-gold" placeholder="e.g. Director of Marketing, Founder" />
+        <Input {...register("role")} className="bg-white border-brand-border text-brand-text rounded-none focus-visible:ring-brand-gold" placeholder="e.g. Director of Marketing, Founder" />
       </div>
 
       <div>
         <Label className="text-brand-muted text-xs tracking-widest uppercase mb-2 block">What help do you need? *</Label>
-        <Textarea {...register("helpNeeded")} className="bg-brand-surface border-brand-border text-brand-cream rounded-none focus-visible:ring-brand-gold min-h-24" placeholder="Tell me about your speaking goals and challenges..." />
-        {errors.helpNeeded && <p className="text-red-400 text-xs mt-1">{errors.helpNeeded.message}</p>}
+        <Textarea {...register("helpNeeded")} className="bg-white border-brand-border text-brand-text rounded-none focus-visible:ring-brand-gold min-h-24" placeholder="Tell me about your speaking goals and challenges..." />
+        {errors.helpNeeded && <p className="text-red-500 text-xs mt-1">{errors.helpNeeded.message}</p>}
       </div>
 
       <div className="flex items-start gap-3">
@@ -88,12 +88,12 @@ export function ContactForm() {
           I agree to be contacted by Sravanthi about coaching opportunities. I understand my data will be handled in accordance with the <Link href="/privacy-policy" className="text-brand-gold hover:underline">Privacy Policy</Link>.
         </Label>
       </div>
-      {errors.consent && <p className="text-red-400 text-xs">{errors.consent.message}</p>}
+      {errors.consent && <p className="text-red-500 text-xs">{errors.consent.message}</p>}
 
       <Button
         type="submit"
         disabled={loading}
-        className="w-full bg-brand-gold hover:bg-brand-gold-light text-brand-black py-5 text-sm tracking-widest uppercase rounded-none transition-all duration-300"
+        className="w-full bg-brand-gold hover:bg-brand-gold-light text-white py-5 text-sm tracking-widest uppercase rounded-none transition-all duration-300"
       >
         {loading ? "Sending..." : "Send Message"}
       </Button>
