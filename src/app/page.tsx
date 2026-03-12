@@ -1,5 +1,5 @@
 import { Metadata } from "next"
-export const dynamic = "force-dynamic"
+export const revalidate = 300
 import { getPayload } from "@/lib/payload-client"
 import { BlockRenderer } from "@/components/public/BlockRenderer"
 import { Navbar } from "@/components/public/layout/Navbar"
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   title: "Emcee Sravz | Sravanthi Prattipati — Emcee & Event Host",
   description:
     "Bringing warmth, energy, and unforgettable moments to every stage. Emcee services for weddings, corporate events, and celebrations. Based in Dallas, TX.",
+  alternates: { canonical: "/" },
 }
 
 export default async function HomePage() {

@@ -1,3 +1,5 @@
+export const revalidate = 300
+
 import { Metadata } from "next"
 import Link from "next/link"
 import { ArrowRight, Check, Users, Mic, Target, Star } from "lucide-react"
@@ -9,6 +11,7 @@ export const metadata: Metadata = {
   title: "Leadership Launchpad — Public Speaking & Confidence Coaching | Emcee Sravz",
   description:
     "Private & group public speaking and confidence coaching. Build leadership, communication, and stage presence with Sravz — a professional emcee who has hosted 100+ live events.",
+  alternates: { canonical: "/leadership-launchpad" },
 }
 
 const privatePackages = [

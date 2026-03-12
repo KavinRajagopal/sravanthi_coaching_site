@@ -1,3 +1,5 @@
+export const revalidate = 300
+
 import { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
@@ -9,6 +11,7 @@ import { formatDate } from "@/lib/utils"
 export const metadata: Metadata = {
   title: "Blog",
   description: "Insights, practical wisdom, and resources for speakers, leaders, and communicators.",
+  alternates: { canonical: "/blog" },
 }
 
 export default async function BlogPage() {

@@ -1,8 +1,12 @@
+export const revalidate = 300
+
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { Check, ArrowLeft } from "lucide-react"
 import { getPayload } from "@/lib/payload-client"
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://sravanthi.com"
 import { CTASection } from "@/components/public/sections/CTASection"
 import { ScrollReveal } from "@/components/public/shared/ScrollReveal"
 import { Button } from "@/components/ui/button"
@@ -15,7 +19,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const payload = await getPayload()
     const result = await payload.find({ collection: "services", where: { slug: { equals: slug } }, limit: 1 })
     const service = result.docs[0]
-    if (service) return { title: service.title as string, description: service.summary as string }
+    if (service) return {
+      title: service.title as string,
+      description: service.summary as string,
+      alternates: { canonical: `/services/${slug}` },
+    }
   } catch {}
   return { title: "Service" }
 }
@@ -32,8 +40,33 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   if (!service) notFound()
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.summary || "",
+    provider: {
+      "@type": "Person",
+      name: "Sravanthi Prattipati",
+      url: SITE_URL,
+    },
+    url: `${SITE_URL}/services/${slug}`,
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
+      { "@type": "ListItem", position: 3, name: service.title, item: `${SITE_URL}/services/${slug}` },
+    ],
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <section className="bg-brand-bg pt-32 pb-24">
         <div className="max-w-4xl mx-auto px-6">
           <ScrollReveal>

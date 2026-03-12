@@ -1,3 +1,5 @@
+export const revalidate = 300
+
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
@@ -23,10 +25,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       return {
         title: seo?.title || post.title as string,
         description: seo?.description || post.excerpt as string,
+        alternates: { canonical: `/blog/${slug}` },
         openGraph: {
           type: "article",
           title: seo?.title || post.title as string,
           description: seo?.description || post.excerpt as string,
+          url: `${SITE_URL}/blog/${slug}`,
           images: post.coverImage ? [{ url: (post.coverImage as any).url }] : undefined,
           publishedTime: post.publishedAt as string,
           authors: post.author ? [post.author as string] : ["Sravanthi Prattipati"],
@@ -119,6 +123,16 @@ export default async function BlogPostPage({ params }: Props) {
 
   if (!post) notFound()
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${SITE_URL}/blog/${slug}` },
+    ],
+  }
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -144,6 +158,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
@@ -177,6 +192,7 @@ export default async function BlogPostPage({ params }: Props) {
                   src={(post.coverImage as any).url}
                   alt={(post.coverImage as any).alt || post.title}
                   fill
+                  priority
                   className="object-cover"
                 />
               </div>

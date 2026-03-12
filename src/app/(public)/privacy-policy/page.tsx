@@ -1,3 +1,5 @@
+export const revalidate = 300
+
 import { Metadata } from "next"
 import Link from "next/link"
 import { ScrollReveal } from "@/components/public/shared/ScrollReveal"

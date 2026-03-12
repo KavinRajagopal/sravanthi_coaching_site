@@ -1,3 +1,5 @@
+export const revalidate = 300
+
 import { Metadata } from "next"
 import Link from "next/link"
 import { ArrowRight, Check } from "lucide-react"
@@ -10,6 +12,7 @@ import { Badge } from "@/components/ui/badge"
 export const metadata: Metadata = {
   title: "Services",
   description: "Emcee & hosting services and speaker coaching — professional event hosting and presentation skills training.",
+  alternates: { canonical: "/services" },
 }
 
 export default async function ServicesPage() {

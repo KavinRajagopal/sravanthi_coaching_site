@@ -1,3 +1,5 @@
+export const revalidate = 300
+
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getPayload } from "@/lib/payload-client"

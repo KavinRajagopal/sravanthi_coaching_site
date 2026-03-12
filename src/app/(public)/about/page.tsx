@@ -1,3 +1,5 @@
+export const revalidate = 300
+
 import { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
@@ -13,6 +15,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://sravanthi.com"
 export const metadata: Metadata = {
   title: "About",
   description: "Learn about Sravanthi Prattipati — emcee, speaker coach, and event host.",
+  alternates: { canonical: "/about" },
 }
 
 const personSchema = {

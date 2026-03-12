@@ -1,3 +1,5 @@
+export const revalidate = 300
+
 import { Metadata } from "next"
 import { getPayload } from "@/lib/payload-client"
 import { ScrollReveal } from "@/components/public/shared/ScrollReveal"
@@ -6,6 +8,7 @@ import { ContactForm } from "@/components/public/sections/ContactForm"
 export const metadata: Metadata = {
   title: "Book a Call",
   description: "Schedule a free discovery call with Sravanthi Prattipati to discuss your event or coaching needs.",
+  alternates: { canonical: "/book-call" },
 }
 
 export default async function BookCallPage() {

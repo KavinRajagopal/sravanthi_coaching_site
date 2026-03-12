@@ -1,3 +1,5 @@
+export const revalidate = 300
+
 import { Metadata } from "next"
 import { CTASection } from "@/components/public/sections/CTASection"
 import { ScrollReveal } from "@/components/public/shared/ScrollReveal"
@@ -5,6 +7,7 @@ import { ScrollReveal } from "@/components/public/shared/ScrollReveal"
 export const metadata: Metadata = {
   title: "Testimonials",
   description: "What clients say about working with Sravanthi Prattipati.",
+  alternates: { canonical: "/testimonials" },
 }
 
 export default function TestimonialsPage() {

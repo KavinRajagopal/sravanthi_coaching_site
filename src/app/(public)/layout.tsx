@@ -1,3 +1,5 @@
+export const revalidate = 300
+
 import { Navbar } from "@/components/public/layout/Navbar"
 import { Footer } from "@/components/public/layout/Footer"
 import { CookieBanner } from "@/components/public/shared/CookieBanner"

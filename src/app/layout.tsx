@@ -40,6 +40,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Emcee Sravz | Sravanthi Prattipati — Emcee & Event Host",
     template: "%s | Emcee Sravz",
@@ -62,6 +63,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Emcee Sravz",
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "Emcee Sravz — Sravanthi Prattipati" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@emcee_sravz",
   },
   robots: {
     index: true,
@@ -77,6 +83,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
