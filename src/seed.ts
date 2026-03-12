@@ -324,7 +324,7 @@ async function seed() {
               blockType: "stats",
               stats: [
                 { value: "100+", label: "Events Hosted", description: "Corporate & social events" },
-                { value: "50+", label: "Corporate Clients", description: "Trusted partnerships" },
+                { value: "200+", label: "People Coached", description: "In public speaking, confidence & stage presence" },
                 { value: "5+", label: "Years Experience", description: "In emcee & speaker coaching" },
                 { value: "10+", label: "Industries", description: "Across diverse sectors" },
               ],

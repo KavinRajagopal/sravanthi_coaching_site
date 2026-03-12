@@ -24,7 +24,7 @@ export function AboutSection({
   stats = [
     { value: "100+", label: "Events Emceed" },
     { value: "5+", label: "Years Experience" },
-    { value: "50+", label: "Corporate Clients" },
+    { value: "200+", label: "People Coached" },
   ],
 }: AboutSectionProps) {
   return (

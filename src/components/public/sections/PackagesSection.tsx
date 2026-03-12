@@ -8,10 +8,14 @@ import { ScrollReveal } from "@/components/public/shared/ScrollReveal"
 interface PackageItem {
   name: string
   badge?: string
-  features: string[]
+  features: (string | { feature: string })[]
   ctaLabel?: string
   ctaHref?: string
   highlighted?: boolean
+}
+
+function normalizeFeatures(features: (string | { feature: string })[]): string[] {
+  return features.map((f) => (typeof f === "string" ? f : f.feature))
 }
 
 const defaultPackages: PackageItem[] = [
@@ -67,8 +71,9 @@ export function PackagesSection({
   sectionTitle = "Emcee Packages",
   subtitle = "Choose the experience that fits your event.",
   quote = "I like to bring people together and make the event memorable. If it's a concert, my goal is to make sure everyone is having a good time. If it's a Sangeet, my goal is to make the bride and groom feel special — I treat it as my best friend's wedding.",
-  packages = defaultPackages,
+  packages,
 }: PackagesSectionProps) {
+  const displayPackages = packages && packages.length > 0 ? packages : defaultPackages
   return (
     <section className="bg-brand-bg py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6">
@@ -90,7 +95,7 @@ export function PackagesSection({
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
-          {packages.map((pkg, i) => (
+          {displayPackages.map((pkg, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
               <div
                 className={`relative flex flex-col h-full transition-all duration-300 ${
@@ -117,7 +122,7 @@ export function PackagesSection({
                   <div className="w-8 h-px bg-brand-border mx-auto mb-6" />
 
                   <ul className="space-y-4 flex-1 mb-8">
-                    {pkg.features.map((feature, j) => (
+                    {normalizeFeatures(pkg.features).map((feature, j) => (
                       <li key={j} className="flex items-start gap-3 text-sm text-brand-muted leading-relaxed">
                         <Check size={16} className="text-brand-gold shrink-0 mt-0.5" />
                         <span>{feature}</span>

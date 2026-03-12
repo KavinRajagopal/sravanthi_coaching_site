@@ -212,7 +212,7 @@ export async function autoSeed(payload: Payload) {
             blockType: "stats",
             stats: [
               { value: "100+", label: "Events Hosted", description: "Corporate & social events" },
-              { value: "50+", label: "Corporate Clients", description: "Trusted partnerships" },
+              { value: "200+", label: "People Coached", description: "In public speaking, confidence & stage presence" },
               { value: "5+", label: "Years Experience", description: "In emcee & speaker coaching" },
               { value: "10+", label: "Industries", description: "Across diverse sectors" },
             ],
@@ -241,6 +241,47 @@ export async function autoSeed(payload: Payload) {
             sectionTitle: "Emcee Packages",
             subtitle: "Choose the experience that fits your event.",
             quote: "I like to bring people together and make the event memorable. If it's a concert, my goal is to make sure everyone is having a good time. If it's a Sangeet, my goal is to make the bride and groom feel special — I treat it as my best friend's wedding.",
+            packages: [
+              {
+                name: "Silver",
+                features: [
+                  { feature: "Intro call" },
+                  { feature: "2 hours at the event" },
+                  { feature: "Agenda provided by client a day before the event" },
+                ],
+                ctaLabel: "Get Started",
+                ctaHref: "/book-call",
+              },
+              {
+                name: "Gold",
+                badge: "Most Popular",
+                highlighted: true,
+                features: [
+                  { feature: "Intro call" },
+                  { feature: "4 hours at the event" },
+                  { feature: "Call to go over your expectations" },
+                  { feature: "Agenda designed by Sravanthi based on your needs" },
+                  { feature: "3+ personalized games to engage the audience" },
+                  { feature: "Coordination with DJ, photographer & videographer" },
+                ],
+                ctaLabel: "Book Now",
+                ctaHref: "/book-call",
+              },
+              {
+                name: "Platinum",
+                features: [
+                  { feature: "Intro call" },
+                  { feature: "6 hours at the event (4 hrs on stage + 2 hrs on dance floor)" },
+                  { feature: "Call to go over your expectations" },
+                  { feature: "Agenda designed by Sravanthi based on your needs" },
+                  { feature: "3+ personalized games to engage the audience" },
+                  { feature: "Encourage every guest onto the dance floor — parents, shy guests, everyone!" },
+                  { feature: "Coordination with DJ, photographer & videographer" },
+                ],
+                ctaLabel: "Book Now",
+                ctaHref: "/book-call",
+              },
+            ],
           },
           {
             blockType: "speaking",

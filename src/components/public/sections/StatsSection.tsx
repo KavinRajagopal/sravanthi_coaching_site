@@ -49,7 +49,8 @@ const defaultStats: Stat[] = [
   { value: "10+", label: "Event Formats", description: "Conferences, pageants, launches, panels & more" },
 ]
 
-export function StatsSection({ sectionTitle, stats = defaultStats }: StatsSectionProps) {
+export function StatsSection({ sectionTitle, stats }: StatsSectionProps) {
+  const displayStats = stats && stats.length > 0 ? stats : defaultStats
   return (
     <section className="bg-brand-bg border-y border-brand-border py-20 md:py-24">
       <div className="max-w-7xl mx-auto px-6">
@@ -59,7 +60,7 @@ export function StatsSection({ sectionTitle, stats = defaultStats }: StatsSectio
           </ScrollReveal>
         )}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-          {stats.map((stat, i) => (
+          {displayStats.map((stat, i) => (
             <ScrollReveal key={i} delay={i * 0.1} className="text-center">
               <AnimatedStat value={stat.value} />
               <p className="text-brand-gold font-sans text-xs tracking-widest uppercase mt-2 mb-1">{stat.label}</p>
